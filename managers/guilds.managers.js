@@ -1,14 +1,15 @@
 const Collection =  require('../structures/collection.js');
+const GuildManager = require('./guild.manager.js');
 
 
-class GuildsManager extends Collection{
+class GuildsManager extends Collection {
 
   constructor() {
     super('guilds');
   }
 
 
-  async get(id) {
+  async get(id = null) {
     const doc = await this.data(id);
     return doc
   }
@@ -25,6 +26,12 @@ class GuildsManager extends Collection{
     const doc = await this.data(id);
     docRef.delete();
     return doc;
+  }
+
+
+  async fetch(id) {
+    const doc = await this.data(id);
+    return new GuildManager(doc)
   }
 }
 

@@ -1,4 +1,5 @@
 const Database = require('./database.js');
+const {getDocs} = require('../utilities/collection.js');
 
 
 class Collection extends Database{
@@ -27,12 +28,8 @@ class Collection extends Database{
 
     const reference = this.reference(id);
     const collection = await reference.get();
-    const docs = [];
     if (id == null) {
-      for (let doc in collection) {
-        docs.push(doc.data());
-      }
-      return docs;
+      return await getDocs(collection);
     } else {
       return collection.data();
     }
