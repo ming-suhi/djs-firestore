@@ -6,7 +6,7 @@ class Client {
 
   constructor(config) {
 
-    this.config = require(config);
+    this.config = require.main.require(config);
 
     FirebaseAdmin.initializeApp({
       credential: FirebaseAdmin.credential.cert(this.config.service_account)
