@@ -3,6 +3,9 @@ const FirebaseAdmin = require('firebase-admin');
 
 class Database {
 
+  /**
+   * Initiates database
+   */
   constructor() {
 
     this.db = FirebaseAdmin.firestore();

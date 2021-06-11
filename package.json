@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "doc": "jsdoc -c jsdoc.json",
+    "generate-docs": "node_modules/.bin/jsdoc -c jsdoc.json"
   },
   "keywords": [],
   "author": "明强",
@@ -12,5 +13,9 @@
   "dependencies": {
     "discord.js": "^12.5.3",
     "firebase-admin": "^9.9.0"
+  },
+  "devDependencies": {
+    "docdash": "^1.2.0",
+    "jsdoc": "^3.6.7"
   }
 }
