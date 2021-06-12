@@ -1,4 +1,5 @@
 const Collection = require("../structures/collection.js");
+const UserManager = require("./user.manager.js");
 
 
 class UsersManager extends Collection {
@@ -48,6 +49,17 @@ class UsersManager extends Collection {
     const doc = await this.data(id);
     docRef.delete();
     return doc;
+  }
+
+
+  /**
+   * Fetches doc, fetches a pseudo doc if doc does not exist
+   * @param {string} id id of doc to fetch
+   * @returns {UserManager} fetched guild
+   */
+   async fetch(id) {
+    const doc = await this.data(id);
+    return new UserManager(this.guildID, doc);
   }
 }
 

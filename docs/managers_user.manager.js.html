@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Client - Documentation</title>
+    <title>managers/user.manager.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,265 +32,41 @@
 
 <div id="main">
     
-    <h1 class="page-title">Client</h1>
+    <h1 class="page-title">managers/user.manager.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-        Client
-        </h2>
-        
-    
-</header>
-
-<article>
-    
-        <div class="container-overview">
-        
-            
-
-    
-
-    <h4 class="name" id="Client"><span class="type-signature"></span>new Client<span class="signature">(config)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="client.js.html">client.js</a>, <a href="client.js.html#line13">line 13</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>config</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>access config.json as object</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>guilds</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="GuildsManager.html">GuildsManager</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>class for managing guilds</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<div class="description usertext">
-    <p>Client for managing app client, and db client</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>config</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>path to config.json from root</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        </div>
-    
-
-    
-
-    
-
-    
-    
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const Document = require("../structures/document")
+
+
+class UserManager extends Document {
+
+  /**
+   * Manages the user doc
+   * Path: db/guilds/{guildID}/users/{userID}
+   * @param {string} guildID guild id
+   * @param {object} data field values of doc
+   * @param {string} data.id id of doc
+   * @property {string} path absolute path leading to document
+   * @property {string} id id of doc
+   * @property {string} guildID guild id
+   */
+  constructor(guildID, data) {
+    super(`guild/${guildID}/users/${data.id}`);
+    Object.assign(this, data);
+    this.guildID = guildID;
+  }
+}
+
+module.exports = UserManager;</code></pre>
+        </article>
+    </section>
 
 
 

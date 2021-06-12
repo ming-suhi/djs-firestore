@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Client - Documentation</title>
+    <title>UserManager - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Client</h1>
+    <h1 class="page-title">UserManager</h1>
     
 
     
@@ -45,7 +45,7 @@
 <header>
     
         <h2>
-        Client
+        UserManager
         </h2>
         
     
@@ -59,7 +59,7 @@
 
     
 
-    <h4 class="name" id="Client"><span class="type-signature"></span>new Client<span class="signature">(config)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="UserManager"><span class="type-signature"></span>new UserManager<span class="signature">(guildID, data)</span><span class="type-signature"></span></h4>
 
     
 
@@ -71,7 +71,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="client.js.html">client.js</a>, <a href="client.js.html#line13">line 13</a>
+        <a href="managers_user.manager.js.html">managers/user.manager.js</a>, <a href="managers_user.manager.js.html#line16">line 16</a>
     </li></ul></dd>
     
 
@@ -134,13 +134,13 @@
 
         <tr>
             
-                <td class="name"><code>config</code></td>
+                <td class="name"><code>path</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type">string</span>
 
 
             
@@ -150,20 +150,20 @@
 
             
 
-            <td class="description last"><p>access config.json as object</p></td>
+            <td class="description last"><p>absolute path leading to document</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>guilds</code></td>
+                <td class="name"><code>id</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="GuildsManager.html">GuildsManager</a></span>
+<span class="param-type">string</span>
 
 
             
@@ -173,7 +173,30 @@
 
             
 
-            <td class="description last"><p>class for managing guilds</p></td>
+            <td class="description last"><p>id of doc</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>guildID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>guild id</p></td>
         </tr>
 
     
@@ -186,7 +209,8 @@
 
 
 <div class="description usertext">
-    <p>Client for managing app client, and db client</p>
+    <p>Manages the user doc
+Path: db/guilds/{guildID}/users/{userID}</p>
 </div>
 
 
@@ -224,7 +248,7 @@
 
         <tr>
             
-                <td class="name"><code>config</code></td>
+                <td class="name"><code>guildID</code></td>
             
 
             <td class="type">
@@ -240,7 +264,79 @@
 
             
 
-            <td class="description last"><p>path to config.json from root</p></td>
+            <td class="description last"><p>guild id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>field values of doc</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>id of doc</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     

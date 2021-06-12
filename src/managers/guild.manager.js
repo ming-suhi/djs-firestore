@@ -8,7 +8,7 @@ class GuildManager extends Document {
    * Manages the guild doc
    * Path: db/guilds/{guildID}
    * @param {object} data field values of doc
-   * @param {object} data.id id of doc
+   * @param {string} data.id id of doc
    * @property {string} id id of doc
    * @property {string} path absolute path leading to document
    * @property {UsersManager} users manage users
