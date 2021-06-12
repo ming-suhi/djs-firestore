@@ -1,5 +1,5 @@
 const FirebaseAdmin = require('firebase-admin');
-const GuildsManager = require('./managers/guilds.managers.js');
+const GuildsManager = require('./managers/guilds.manager.js');
 
 
 class Client {

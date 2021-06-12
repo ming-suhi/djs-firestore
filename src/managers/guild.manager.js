@@ -6,7 +6,6 @@ class GuildManager extends Document {
   /**
    * Manages the guild doc
    * Path: db/guilds/{guildID}
-   * 
    * @param {object} data field values of doc
    * @param {object} data.id id of doc
    * @property {object} id id of doc
@@ -23,6 +22,22 @@ class GuildManager extends Document {
    */
   async update(data) {
     await this.reference().set(data, {merge: true});
+  }
+
+
+  /**
+   * Sets archived field to true
+   */
+  async archive() {
+    await this.update({"archived": true});
+  }
+
+
+  /**
+   * Sets archived field to false
+   */
+  async unarchive() {
+    await this.update({"archived": false});
   }
 }
 
