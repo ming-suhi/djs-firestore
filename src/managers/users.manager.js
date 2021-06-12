@@ -59,7 +59,11 @@ class UsersManager extends Collection {
    */
    async fetch(id) {
     const doc = await this.data(id);
-    return new UserManager(this.guildID, doc);
+    if (doc == undefined) {
+      return new UserManager(this.guildID, {"id": id});
+    } else {
+      return new UserManager(this.guildID, doc);
+    }
   }
 }
 

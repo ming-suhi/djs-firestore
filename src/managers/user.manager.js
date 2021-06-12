@@ -14,9 +14,34 @@ class UserManager extends Document {
    * @property {string} guildID guild id
    */
   constructor(guildID, data) {
-    super(`guild/${guildID}/users/${data.id}`);
+    super(`guilds/${guildID}/users/${data.id}`);
     Object.assign(this, data);
     this.guildID = guildID;
+  }
+
+
+  /**
+   * Updates field values of docs
+   * @param {object} data field values of doc
+   */
+  async update(data) {
+    await this.reference().set(data, {merge: true});
+  }
+
+
+  /**
+   * Sets archived field to true
+   */
+  async archive() {
+    await this.update({"archived": true});
+  }
+
+
+  /**
+   * Sets archived field to false
+   */
+  async unarchive() {
+    await this.update({"archived": false});
   }
 }
 

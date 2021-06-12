@@ -57,7 +57,11 @@ class GuildsManager extends Collection {
    */
   async fetch(id) {
     const doc = await this.data(id);
-    return new GuildManager(doc);
+    if (doc == undefined) {
+      return new GuildManager({"id": id});
+    } else {
+      return new GuildManager(doc);
+    }
   }
 }
 
