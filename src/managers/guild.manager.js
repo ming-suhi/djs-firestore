@@ -1,4 +1,5 @@
 const Document =  require('../structures/document.js');
+const UsersManager = require('./users.manager.js');
 
 
 class GuildManager extends Document {
@@ -8,11 +9,14 @@ class GuildManager extends Document {
    * Path: db/guilds/{guildID}
    * @param {object} data field values of doc
    * @param {object} data.id id of doc
-   * @property {object} id id of doc
+   * @property {string} id id of doc
+   * @property {string} path absolute path leading to document
+   * @property {UsersManager} users manage users
    */
   constructor(data) {
     super(`guilds/${data.id}`);
     Object.assign(this, data);
+    this.users = new UsersManager(data.id);
   }
 
   

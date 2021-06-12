@@ -1,6 +1,5 @@
 const Database = require('./database.js');
 const {getDocs} = require('../utilities/collection.js');
-const { firestore } = require('firebase-admin');
 
 
 class Collection extends Database{
