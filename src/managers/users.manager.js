@@ -7,9 +7,9 @@ class UsersManager extends Collection {
   /**
    * Manages the user docs of the users collection
    * Path: db/guilds/{guildID}/users
-   * @param {string} guildID guild id
-   * @property {string} guildID guild id
-   * @property {string} path absolute path leading to collection
+   * @param {guildID} guildID guild id
+   * @property {guildID} guildID guild id
+   * @property {collectionPath} path absolute path leading to users collection
    */
   constructor(guildID) {
     super(`guilds/${guildID}/users`);
@@ -18,8 +18,8 @@ class UsersManager extends Collection {
 
   /**
    * Gets field values of doc, gets all docs if no id is passed
-   * @param {string} [id] id of doc
-   * @returns {object|array} field values of doc
+   * @param {userID} [id] id of user to get
+   * @returns {docData|collectionData} user field values
    */
    async get(id = null) {
     const doc = await this.data(id);
@@ -29,9 +29,9 @@ class UsersManager extends Collection {
 
   /**
    * Posts field values of doc
-   * @param {object} data field values to update
-   * @param {string} data.id id of doc
-   * @returns {object} updated field values of doc
+   * @param {fieldValues} data field values of user to post
+   * @param {userID} data.id id of user to post
+   * @returns {fieldValues} updated field values of user
    */
    async post(data) {
     await this.reference(data.id).set(data, { merge: true });
@@ -41,8 +41,8 @@ class UsersManager extends Collection {
 
   /**
    * Posts object as field values
-   * @param {string} id id of doc to delete
-   * @returns {object} field values of the deleted docs
+   * @param {userID} id id of user to delete
+   * @returns {fieldValues} field values of the deleted user
    */
   async delete(id) {
     const docRef = this.reference(id);
@@ -54,8 +54,8 @@ class UsersManager extends Collection {
 
   /**
    * Fetches doc, fetches a pseudo doc if doc does not exist
-   * @param {string} id id of doc to fetch
-   * @returns {UserManager} fetched guild
+   * @param {userID} id id  of user to fetch
+   * @returns {UserManager} fetched user
    */
    async fetch(id) {
     const doc = await this.data(id);

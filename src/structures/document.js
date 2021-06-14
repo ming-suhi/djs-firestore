@@ -5,8 +5,8 @@ class Document extends Database{
 
   /**
    * Document structure
-   * @param {string} path absolute path leading to the doc
-   * @property {string} path absolute path leading to the doc
+   * @param {documentPath} path absolute path leading to document
+   * @property {documentPath} path absolute path leading to docuemnt
    */
   constructor(path) {
     super()
@@ -27,7 +27,7 @@ class Document extends Database{
 
   /**
     * Gets document's field values 
-    * @returns {object} document's field values
+    * @returns {docData} doc field values
     */
   async data() {
 

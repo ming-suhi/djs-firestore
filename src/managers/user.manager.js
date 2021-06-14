@@ -6,12 +6,12 @@ class UserManager extends Document {
   /**
    * Manages the user doc
    * Path: db/guilds/{guildID}/users/{userID}
-   * @param {string} guildID guild id
-   * @param {object} data field values of doc
-   * @param {string} data.id id of doc
-   * @property {string} path absolute path leading to document
-   * @property {string} id id of doc
-   * @property {string} guildID guild id
+   * @param {guildID} guildID guild id
+   * @param {fieldValues} data field values of user doc
+   * @param {userID} data.id id of user doc
+   * @property {documentPath} path absolute path leading to user document
+   * @property {userID} id guild id
+   * @property {guildID} guildID guild id
    */
   constructor(guildID, data) {
     super(`guilds/${guildID}/users/${data.id}`);
@@ -22,7 +22,7 @@ class UserManager extends Document {
 
   /**
    * Updates field values of docs
-   * @param {object} data field values of doc
+   * @param {fieldValues} data field values of user doc
    */
   async update(data) {
     await this.reference().set(data, {merge: true});

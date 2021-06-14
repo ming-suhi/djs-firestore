@@ -7,10 +7,10 @@ class GuildManager extends Document {
   /**
    * Manages the guild doc
    * Path: db/guilds/{guildID}
-   * @param {object} data field values of doc
-   * @param {string} data.id id of doc
-   * @property {string} id id of doc
-   * @property {string} path absolute path leading to document
+   * @param {fieldValues} data field values of guild doc
+   * @param {guildID} data.id id of guild doc
+   * @property {guildID} id id of guild doc
+   * @property {documentPath} path absolute path leading to document
    * @property {UsersManager} users manage users
    */
   constructor(data) {
@@ -22,7 +22,7 @@ class GuildManager extends Document {
   
   /**
    * Updates field values of docs
-   * @param {object} data field values of doc
+   * @param {fieldValues} data field values of guild doc
    */
   async update(data) {
     await this.reference().set(data, {merge: true});

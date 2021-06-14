@@ -7,7 +7,7 @@ class GuildsManager extends Collection {
   /**
    * Manages the guild docs of the guilds collection
    * Path: db/guilds
-   * @property {string} path absolute path leading to collection
+   * @property {collectionPath} path absolute path leading to guilds collection
    */
   constructor() {
     super("guilds");
@@ -16,8 +16,8 @@ class GuildsManager extends Collection {
 
   /**
    * Gets field values of doc, gets all docs if no id is passed
-   * @param {string} [id] id of doc
-   * @returns {object|array} field values of doc
+   * @param {guildID} [id] id of guild to get
+   * @returns {docData|collectionData} field values of doc
    */
   async get(id = null) {
     const doc = await this.data(id);
@@ -27,9 +27,9 @@ class GuildsManager extends Collection {
 
   /**
    * Posts field values of doc
-   * @param {object} data field values to update
-   * @param {string} data.id id of doc
-   * @returns {object} updated field values of doc
+   * @param {fieldValues} data field values to post
+   * @param {guildID} data.id id of guild to post
+   * @returns {fieldValues} updated field values of guild
    */
   async post(data) {
     await this.reference(data.id).set(data, { merge: true });
@@ -39,8 +39,8 @@ class GuildsManager extends Collection {
 
   /**
    * Posts object as field values
-   * @param {string} id id of doc to delete
-   * @returns {object} field values of the deleted docs
+   * @param {guildID} id id of guild to delete
+   * @returns {fieldValues} field values of the deleted guild
    */
   async delete(id) {
     const docRef = this.reference(id);
@@ -52,7 +52,7 @@ class GuildsManager extends Collection {
 
   /**
    * Fetches doc, fetches a pseudo doc if doc does not exist
-   * @param {string} id id of doc to fetch
+   * @param {guildID} id id  of guild to fetch
    * @returns {GuildManager} fetched guild
    */
   async fetch(id) {

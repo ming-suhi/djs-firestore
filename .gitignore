@@ -1,3 +1,5 @@
 node_modules/
+
+#testing
 /index.js
 /config.json

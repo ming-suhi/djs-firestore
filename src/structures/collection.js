@@ -6,8 +6,8 @@ class Collection extends Database{
 
   /**
    * Collection structure
-   * @param {string} path absolute path leading to the collection
-   * @property {string} path absolute path leading to the collection
+   * @param {collectionPath} path absolute path leading to the collection
+   * @property {collectionPath} path absolute path leading to the collection
    */
   constructor(path) {
     super()
@@ -18,7 +18,7 @@ class Collection extends Database{
   
   /**
     * Gets document reference, gets collection reference if no id is passed
-    * @param {string} [id] id of doc
+    * @param {docID} [id] id of doc
     * @returns {Firestore.DocumentReference|Firestore.CollectionReference} reference to doc
     */
   reference(id = null) {
@@ -35,8 +35,8 @@ class Collection extends Database{
 
   /**
     * Gets document field values, gets docs from collection if no id is passed
-    * @param {string} [id] id of doc 
-    * @returns {object|array} field values
+    * @param {docID} [id] id of doc 
+    * @returns {docData|collectionData} doc field values
     */
   async data(id = null) {
 
