@@ -6,6 +6,7 @@ class UserManager extends Document {
   /**
    * Manages the user doc
    * Path: db/guilds/{guildID}/users/{userID}
+   * @augments Document
    * @param {guildID} guildID guild id
    * @param {fieldValues} data field values of user doc
    * @param {userID} data.id id of user doc

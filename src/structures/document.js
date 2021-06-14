@@ -5,6 +5,7 @@ class Document extends Database{
 
   /**
    * Document structure
+   * @augments Database
    * @param {documentPath} path absolute path leading to document
    * @property {documentPath} path absolute path leading to docuemnt
    */

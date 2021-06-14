@@ -7,6 +7,7 @@ class UsersManager extends Collection {
   /**
    * Manages the user docs of the users collection
    * Path: db/guilds/{guildID}/users
+   * @augments Collection
    * @param {guildID} guildID guild id
    * @property {guildID} guildID guild id
    * @property {collectionPath} path absolute path leading to users collection

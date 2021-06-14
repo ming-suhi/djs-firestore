@@ -6,6 +6,7 @@ class Collection extends Database{
 
   /**
    * Collection structure
+   * @augments Database
    * @param {collectionPath} path absolute path leading to the collection
    * @property {collectionPath} path absolute path leading to the collection
    */

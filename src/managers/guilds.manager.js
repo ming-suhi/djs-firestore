@@ -7,6 +7,7 @@ class GuildsManager extends Collection {
   /**
    * Manages the guild docs of the guilds collection
    * Path: db/guilds
+   * @augments Collection
    * @property {collectionPath} path absolute path leading to guilds collection
    */
   constructor() {

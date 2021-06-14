@@ -7,6 +7,7 @@ class GuildManager extends Document {
   /**
    * Manages the guild doc
    * Path: db/guilds/{guildID}
+   * @augments Document
    * @param {fieldValues} data field values of guild doc
    * @param {guildID} data.id id of guild doc
    * @property {guildID} id id of guild doc
