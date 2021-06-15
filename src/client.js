@@ -1,5 +1,5 @@
 const FirebaseAdmin = require('firebase-admin');
-const GuildsManager = require('./managers/guilds.manager.js');
+const DatabaseManager = require('./managers/database.manager.js');
 
 
 class Client {
@@ -8,7 +8,7 @@ class Client {
    * Client for managing app client, and db client
    * @param {string} config path to config.json from root
    * @property {object} config access config.json as object
-   * @property {GuildsManager} guilds class for managing guilds
+   * @property {DatabaseManager} db class for managing database
    */
   constructor(config) {
     
@@ -20,7 +20,7 @@ class Client {
       credential: FirebaseAdmin.credential.cert(this.config.service_account)
     });
 
-    this.guilds = new GuildsManager();
+    this.db = new DatabaseManager();
   }
 }
 
