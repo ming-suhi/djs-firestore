@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>GuildsManager - Documentation</title>
+    <title>Interaction - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">GuildsManager</h1>
+    <h1 class="page-title">Interaction</h1>
     
 
     
@@ -45,7 +45,7 @@
 <header>
     
         <h2>
-        GuildsManager
+        Interaction
         </h2>
         
     
@@ -59,7 +59,7 @@
 
     
 
-    <h4 class="name" id="GuildsManager"><span class="type-signature"></span>new GuildsManager<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Interaction"><span class="type-signature"></span>new Interaction<span class="signature">(client, request)</span><span class="type-signature"></span></h4>
 
     
 
@@ -71,7 +71,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_managers_guilds.manager.js.html">src/managers/guilds.manager.js</a>, <a href="src_managers_guilds.manager.js.html#line13">line 13</a>
+        <a href="djs-local-manager_src_structures_interaction.js.html">djs-local-manager/src/structures/interaction.js</a>, <a href="djs-local-manager_src_structures_interaction.js.html#line14">line 14</a>
     </li></ul></dd>
     
 
@@ -134,13 +134,13 @@
 
         <tr>
             
-                <td class="name"><code>path</code></td>
+                <td class="name"><code>client</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#collectionPath">collectionPath</a></span>
+<span class="param-type">Discord.Client</span>
 
 
             
@@ -150,7 +150,53 @@
 
             
 
-            <td class="description last"><p>absolute path leading to guilds collection</p></td>
+            <td class="description last"><p>discord client</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>request</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">request</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>interaction create request</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>responseType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">responseType</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>response type to slash command</p></td>
         </tr>
 
     
@@ -163,8 +209,7 @@
 
 
 <div class="description usertext">
-    <p>Manages the guild docs of the guilds collection
-Path: db/guilds</p>
+    <p>Interaction structure</p>
 </div>
 
 
@@ -175,6 +220,78 @@ Path: db/guilds</p>
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>client</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Discord.Client</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>discord client</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>request</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">request</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>interaction create request</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -199,17 +316,6 @@ Path: db/guilds</p>
     
 
     
-        <h3 class="subsection-title">Extends</h3>
-
-        
-
-
-    <ul>
-        <li><a href="Collection.html">Collection</a></li>
-    </ul>
-
-
-    
 
     
 
@@ -231,7 +337,7 @@ Path: db/guilds</p>
 
     
 
-    <h4 class="name" id="data"><span class="type-signature">(async) </span>data<span class="signature">(id<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="global.html#docData">docData</a>|<a href="global.html#collectionData">collectionData</a>}</span></h4>
+    <h4 class="name" id="author"><span class="type-signature">(async) </span>author<span class="signature">()</span><span class="type-signature"> &rarr; {Discord.GuildMember}</span></h4>
 
     
 
@@ -243,193 +349,7 @@ Path: db/guilds</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_structures_collection.js.html">src/structures/collection.js</a>, <a href="src_structures_collection.js.html#line42">line 42</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Collection.html#data">Collection#data</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    <p>Gets document field values, gets docs from collection if no id is passed</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#docID">docID</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    <code>null</code>
-                
-                </td>
-            
-
-            <td class="description last"><p>id of doc</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>doc field values</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="global.html#docData">docData</a></span>
-|
-
-<span class="param-type"><a href="global.html#collectionData">collectionData</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="delete"><span class="type-signature">(async) </span>delete<span class="signature">(id)</span><span class="type-signature"> &rarr; {<a href="global.html#fieldValues">fieldValues</a>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_managers_guilds.manager.js.html">src/managers/guilds.manager.js</a>, <a href="src_managers_guilds.manager.js.html#line46">line 46</a>
+        <a href="djs-local-manager_src_structures_interaction.js.html">djs-local-manager/src/structures/interaction.js</a>, <a href="djs-local-manager_src_structures_interaction.js.html#line25">line 25</a>
     </li></ul></dd>
     
 
@@ -469,7 +389,7 @@ Path: db/guilds</p>
 
 
 <div class="description usertext">
-    <p>Posts object as field values</p>
+    <p>Gets request author</p>
 </div>
 
 
@@ -480,55 +400,6 @@ Path: db/guilds</p>
 
 
 
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#guildID">guildID</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>id of guild to delete</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -549,7 +420,7 @@ Path: db/guilds</p>
 
         
 <div class="param-desc">
-    <p>field values of the deleted guild</p>
+    <p>request author</p>
 </div>
 
 
@@ -560,7 +431,7 @@ Path: db/guilds</p>
     </dt>
     <dd>
         
-<span class="param-type"><a href="global.html#fieldValues">fieldValues</a></span>
+<span class="param-type">Discord.GuildMember</span>
 
 
     </dd>
@@ -575,7 +446,7 @@ Path: db/guilds</p>
 
     
 
-    <h4 class="name" id="fetch"><span class="type-signature">(async) </span>fetch<span class="signature">(id)</span><span class="type-signature"> &rarr; {<a href="GuildManager.html">GuildManager</a>}</span></h4>
+    <h4 class="name" id="bot"><span class="type-signature">(async) </span>bot<span class="signature">()</span><span class="type-signature"> &rarr; {Discord.GuildMember}</span></h4>
 
     
 
@@ -587,7 +458,7 @@ Path: db/guilds</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_managers_guilds.manager.js.html">src/managers/guilds.manager.js</a>, <a href="src_managers_guilds.manager.js.html#line59">line 59</a>
+        <a href="djs-local-manager_src_structures_interaction.js.html">djs-local-manager/src/structures/interaction.js</a>, <a href="djs-local-manager_src_structures_interaction.js.html#line56">line 56</a>
     </li></ul></dd>
     
 
@@ -627,7 +498,7 @@ Path: db/guilds</p>
 
 
 <div class="description usertext">
-    <p>Fetches doc, fetches a pseudo doc if doc does not exist</p>
+    <p>Gets bot user</p>
 </div>
 
 
@@ -638,55 +509,6 @@ Path: db/guilds</p>
 
 
 
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#guildID">guildID</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>id  of guild to fetch</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -707,7 +529,7 @@ Path: db/guilds</p>
 
         
 <div class="param-desc">
-    <p>fetched guild</p>
+    <p>bot user</p>
 </div>
 
 
@@ -718,7 +540,7 @@ Path: db/guilds</p>
     </dt>
     <dd>
         
-<span class="param-type"><a href="GuildManager.html">GuildManager</a></span>
+<span class="param-type">Discord.GuildMember</span>
 
 
     </dd>
@@ -733,7 +555,7 @@ Path: db/guilds</p>
 
     
 
-    <h4 class="name" id="get"><span class="type-signature">(async) </span>get<span class="signature">(id<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="global.html#docData">docData</a>|<a href="global.html#collectionData">collectionData</a>}</span></h4>
+    <h4 class="name" id="channel"><span class="type-signature">(async) </span>channel<span class="signature">()</span><span class="type-signature"> &rarr; {Discord.TextChannel}</span></h4>
 
     
 
@@ -745,7 +567,7 @@ Path: db/guilds</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_managers_guilds.manager.js.html">src/managers/guilds.manager.js</a>, <a href="src_managers_guilds.manager.js.html#line23">line 23</a>
+        <a href="djs-local-manager_src_structures_interaction.js.html">djs-local-manager/src/structures/interaction.js</a>, <a href="djs-local-manager_src_structures_interaction.js.html#line46">line 46</a>
     </li></ul></dd>
     
 
@@ -785,7 +607,7 @@ Path: db/guilds</p>
 
 
 <div class="description usertext">
-    <p>Gets field values of doc, gets all docs if no id is passed</p>
+    <p>Gets request guild channel</p>
 </div>
 
 
@@ -796,75 +618,6 @@ Path: db/guilds</p>
 
 
 
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#guildID">guildID</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    <code>null</code>
-                
-                </td>
-            
-
-            <td class="description last"><p>id of guild to get</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -885,7 +638,7 @@ Path: db/guilds</p>
 
         
 <div class="param-desc">
-    <p>field values of doc</p>
+    <p>request guild channel</p>
 </div>
 
 
@@ -896,10 +649,7 @@ Path: db/guilds</p>
     </dt>
     <dd>
         
-<span class="param-type"><a href="global.html#docData">docData</a></span>
-|
-
-<span class="param-type"><a href="global.html#collectionData">collectionData</a></span>
+<span class="param-type">Discord.TextChannel</span>
 
 
     </dd>
@@ -914,7 +664,7 @@ Path: db/guilds</p>
 
     
 
-    <h4 class="name" id="post"><span class="type-signature">(async) </span>post<span class="signature">(data)</span><span class="type-signature"> &rarr; {<a href="global.html#fieldValues">fieldValues</a>}</span></h4>
+    <h4 class="name" id="guild"><span class="type-signature">(async) </span>guild<span class="signature">()</span><span class="type-signature"> &rarr; {Discord.Guild}</span></h4>
 
     
 
@@ -926,7 +676,7 @@ Path: db/guilds</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_managers_guilds.manager.js.html">src/managers/guilds.manager.js</a>, <a href="src_managers_guilds.manager.js.html#line35">line 35</a>
+        <a href="djs-local-manager_src_structures_interaction.js.html">djs-local-manager/src/structures/interaction.js</a>, <a href="djs-local-manager_src_structures_interaction.js.html#line36">line 36</a>
     </li></ul></dd>
     
 
@@ -966,7 +716,7 @@ Path: db/guilds</p>
 
 
 <div class="description usertext">
-    <p>Posts field values of doc</p>
+    <p>Gets request guild</p>
 </div>
 
 
@@ -977,104 +727,6 @@ Path: db/guilds</p>
 
 
 
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>data</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#fieldValues">fieldValues</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>field values to post</p>
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#guildID">guildID</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>id of guild to post</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -1095,7 +747,7 @@ Path: db/guilds</p>
 
         
 <div class="param-desc">
-    <p>updated field values of guild</p>
+    <p>request guild</p>
 </div>
 
 
@@ -1106,7 +758,7 @@ Path: db/guilds</p>
     </dt>
     <dd>
         
-<span class="param-type"><a href="global.html#fieldValues">fieldValues</a></span>
+<span class="param-type">Discord.Guild</span>
 
 
     </dd>
@@ -1121,7 +773,7 @@ Path: db/guilds</p>
 
     
 
-    <h4 class="name" id="reference"><span class="type-signature"></span>reference<span class="signature">(id<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Firestore.DocumentReference|Firestore.CollectionReference}</span></h4>
+    <h4 class="name" id="sendEmbed"><span class="type-signature">(async) </span>sendEmbed<span class="signature">(content)</span><span class="type-signature"></span></h4>
 
     
 
@@ -1133,7 +785,7 @@ Path: db/guilds</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_structures_collection.js.html">src/structures/collection.js</a>, <a href="src_structures_collection.js.html#line25">line 25</a>
+        <a href="djs-local-manager_src_structures_interaction.js.html">djs-local-manager/src/structures/interaction.js</a>, <a href="djs-local-manager_src_structures_interaction.js.html#line104">line 104</a>
     </li></ul></dd>
     
 
@@ -1141,11 +793,6 @@ Path: db/guilds</p>
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Collection.html#reference">Collection#reference</a>
-    </li></ul></dd>
     
 
     
@@ -1178,7 +825,7 @@ Path: db/guilds</p>
 
 
 <div class="description usertext">
-    <p>Gets document reference, gets collection reference if no id is passed</p>
+    <p>Sends embed to request channel</p>
 </div>
 
 
@@ -1204,11 +851,7 @@ Path: db/guilds</p>
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
-        
-        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -1220,39 +863,23 @@ Path: db/guilds</p>
 
         <tr>
             
-                <td class="name"><code>id</code></td>
+                <td class="name"><code>content</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#docID">docID</a></span>
+<span class="param-type">Discord.Embed</span>
 
 
             
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
-                <td class="default">
-                
-                    <code>null</code>
-                
-                </td>
-            
 
-            <td class="description last"><p>id of doc</p></td>
+            <td class="description last"><p>embed to send</p></td>
         </tr>
 
     
@@ -1274,31 +901,278 @@ Path: db/guilds</p>
 
 
 
-<h5>Returns:</h5>
+
+
 
         
-<div class="param-desc">
-    <p>reference to doc</p>
+            
+
+    
+
+    <h4 class="name" id="sendEphemeral"><span class="type-signature">(async) </span>sendEphemeral<span class="signature">(content)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="djs-local-manager_src_structures_interaction.js.html">djs-local-manager/src/structures/interaction.js</a>, <a href="djs-local-manager_src_structures_interaction.js.html#line85">line 85</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Sends ephemeral message to request channel</p>
 </div>
 
 
 
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
         
-<span class="param-type">Firestore.DocumentReference</span>
-|
+        <th>Name</th>
+        
 
-<span class="param-type">Firestore.CollectionReference</span>
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>content</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
 
 
-    </dd>
-</dl>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>message to send</p></td>
+        </tr>
 
     
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="sendMessage"><span class="type-signature">(async) </span>sendMessage<span class="signature">(content)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="djs-local-manager_src_structures_interaction.js.html">djs-local-manager/src/structures/interaction.js</a>, <a href="djs-local-manager_src_structures_interaction.js.html#line67">line 67</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Sends message to request channel</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>content</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>message to send</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

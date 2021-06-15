@@ -1,0 +1,3 @@
+[submodule "djs-local-manager"]
+	path = djs-local-manager
+	url = https://github.com/ming-suhi/djs-local-manager

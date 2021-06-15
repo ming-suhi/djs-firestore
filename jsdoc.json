@@ -1,6 +1,6 @@
 {
   "source": {
-    "include": ["src"],
+    "include": ["src", "djs-local-manager/src"],
     "includePattern": ".js$",
     "excludePattern": "(node_modules/|docs)"
   },
