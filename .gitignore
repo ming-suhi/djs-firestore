@@ -3,4 +3,3 @@ node_modules/
 #testing
 /.env
 /index.js
-/config.json
