@@ -22,6 +22,14 @@ class UserManager extends Document {
 
 
   /**
+   * Set ups guild member document
+   * @param {Discord.User} user 
+   */
+  async create(user) {
+    await self.update({"id": user.id, "name": user.name, "archived": False});
+  }
+
+  /**
    * Updates field values of docs
    * @param {fieldValues} data field values of user doc
    */

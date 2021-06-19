@@ -22,6 +22,15 @@ class GuildManager extends Document {
 
   
   /**
+   * Set ups guild docuemnt 
+   * @param {Discord.Guild} guild
+   */
+  async create(guild) {
+    await this.update({"id": guild.id, "name": guild.name, "archived": False});
+  }
+
+
+  /**
    * Updates field values of docs
    * @param {fieldValues} data field values of guild doc
    */
