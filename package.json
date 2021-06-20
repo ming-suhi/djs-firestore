@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "doc": "jsdoc -c jsdoc.json",
-    "generate-docs": "node_modules/.bin/jsdoc -c jsdoc.json"
+    "doc": "jsdoc -c jsdoc.json"
   },
   "keywords": [],
   "author": "明强",
