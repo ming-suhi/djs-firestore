@@ -1,12 +1,12 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ming-suhi/djs-manager/master/assets/logo.svg" alt="Discord Gameserver Bots" width="250" align="center" />
+  <img src="https://raw.githubusercontent.com/ming-suhi/djs-manager/master/assets/logo.svg" alt="Discord Gameserver Bots" width="450" align="center" />
 </p>
 
 <p align="center">
-  <strong>@ming-suhi/djs-manager(Not yet published)</strong>
+  <strong>@ming-suhi/djs-manager</strong>
 </p>
 
-<p align="center">Powered by Discord.js and Firebase Firestore</p>
+<p align="center">Discord.js | Firebase Firestore | @ming-suhi/djs-local-manager</p>
 
 
 ## A. Install
@@ -120,7 +120,7 @@ client.msdm.matchCommand(interaction);
 
 ## F. Post guild data to Firestore on guild create
 
-**1. Listen to `guild_create`**
+**1. Listen to `guildCreate`**
 ```js
 //Triggered when bot becomes a member of a guild
 client.on('guildCreate', async guild => {
