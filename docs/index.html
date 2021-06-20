@@ -58,21 +58,28 @@
 
     <section class="readme usertext">
         <article><p align="center">
-  <img src="https://raw.githubusercontent.com/ming-suhi/djs-manager/master/assets/logo.png" alt="Discord Gameserver Bots" width="250" align="center" />
+  <img src="https://raw.githubusercontent.com/ming-suhi/djs-manager/master/assets/logo.svg" width="450" align="center" />
 </p>
 <p align="center">
-  <strong>@ming-suhi/djs-manager(Not yet published)</strong>
+  <a href="https://github.com/ming-suhi/djs-manager" target="_blank">
+    <strong>@ming-suhi/djs-manager</strong>
+  </a>
 </p>
-<p align="center">Powered by Discord.js and Firebase Firestore</p>
-<h2>A. Install</h2>
+<p align="center">Discord.js | Firebase Firestore | @ming-suhi/djs-local-manager</p>
+<h2>I. About</h2>
+<p>A package for managing Discord Slash Commands, this package makes use of Firebase Firestore for database, and @ming-suhi/djs-local-manager for managing local and Discord. For an in-depth documentation visit the <a href="https://ming-suhi.github.io/djs-manager/" target="_blank">official website</a>. For users who want to opt for a similar package without a database manager, check out <a href="https://github.com/ming-suhi/djs-local-manager" target="_blank">@ming-suhi/djs-local-manager</a> from the same developer.</p>
+<h2>II. Getting Started</h2>
+<h2>A. Installing</h2>
 <h5>Run npm install on the command line or terminal.</h5>
 <pre class="prettyprint source"><code>npm install @ming-suhi/djs-manager
 </code></pre>
 <h5>Run npm ci to install dependencies.</h5>
 <pre class="prettyprint source"><code>npm ci
 </code></pre>
-<h2>B. Set Up Environment</h2>
-<p><strong>1. Create a <code>.env</code> file in the root directory</strong></p>
+<h2>B. Setting environment</h2>
+<ol>
+<li>Create a <code>.env</code> file in the root directory</li>
+</ol>
 <pre class="prettyprint source lang-env"><code>BOT_TOKEN = 
 
 COMMANDS_FOLDER =
@@ -84,33 +91,55 @@ CLIENT_EMAIL =
 CLIENT_ID =
 CLIENT_X509_CERT_URL =
 </code></pre>
-<p><strong>2. Get the Discord bot's token and store it as <code>BOT_TOKEN</code>.</strong></p>
-<p><strong>3. Create a folder to hold command files. Store the folder path from the root as <code>COMMANDS_FOLDER</code>.</strong></p>
-<p><strong>4. Get your Firebase project's <code>Admin SDK config</code> file. Store the values as their corresponding keys.</strong></p>
+<ol start="2">
+<li>
+<p>Get the Discord bot's token and store it as <code>BOT_TOKEN</code>.</p>
+</li>
+<li>
+<p>Create a folder to hold command files. Store the folder path from the root as <code>COMMANDS_FOLDER</code>.</p>
+</li>
+<li>
+<p>Get your Firebase project's <code>Admin SDK config</code> file. Store the values as their corresponding keys.</p>
+</li>
+</ol>
 <ul>
 <li><code>type</code>, <code>auth_uri</code>, <code>token_uri</code>, and <code>auth_provider_x509_cert_url</code> fields need not to be stored</li>
 </ul>
-<h2>C. Set Up Bot</h2>
-<p><strong>1. Create an instance of Discord Client</strong></p>
+<h2>C. Setting bot</h2>
+<ol>
+<li>Create an instance of Discord Client</li>
+</ol>
 <pre class="prettyprint source lang-js"><code>const Discord = require('discord.js');
 const client = new Discord.Client();
 </code></pre>
-<p><strong>2. Attach an instance of Manager Client</strong></p>
+<ol start="2">
+<li>Attach an instance of Manager Client</li>
+</ol>
 <pre class="prettyprint source lang-js"><code>const Manager = require('@ming-suhi/djs-manager');
 client.msdm = new Manager.Client();
 </code></pre>
-<p><strong>3. Login bot</strong></p>
+<ol start="3">
+<li>Login bot</li>
+</ol>
 <pre class="prettyprint source lang-js"><code>client.login(client.msdm.token);
 </code></pre>
-<h2>D. Create Slash Commands</h2>
-<p><strong>1. Create a file inside the commands folder</strong></p>
-<p><strong>2. Require/import <code>@ming-suhi/djs-manager</code></strong></p>
+<h2>D. Creating commands</h2>
+<ol>
+<li>
+<p>Create a file inside the commands folder</p>
+</li>
+<li>
+<p>Require/import <code>@ming-suhi/djs-manager</code></p>
+</li>
+</ol>
 <pre class="prettyprint source lang-js"><code>const Manager = require('@ming-suhi/djs-manager');
 </code></pre>
-<p><strong>3. Create and export instance of GlobalCommand</strong></p>
+<ol start="3">
+<li>Create and export instance of GlobalCommand</li>
+</ol>
 <pre class="prettyprint source lang-js"><code>module.exports = new Manager.GlobalCommand(commandData);
 </code></pre>
-<p><strong>Example</strong></p>
+<p>Example</p>
 <pre class="prettyprint source lang-js"><code>const Manager = require('@ming-suhi/djs-manager');
 
 module.exports = new Manager.GlobalCommand({
@@ -123,35 +152,49 @@ module.exports = new Manager.GlobalCommand({
   }
 });
 </code></pre>
-<h2>E. Set Up Slash Commands Handler</h2>
-<p><strong>1. Listen to <code>INTERACTION_CREATE</code></strong></p>
+<h2>E. Handling commands</h2>
+<ol>
+<li>Listen to <code>INTERACTION_CREATE</code></li>
+</ol>
 <pre class="prettyprint source lang-js"><code>//Triggered on Slash Commands
 client.ws.on('INTERACTION_CREATE', async request => {
   //code here
 })
 </code></pre>
-<p><strong>2. Create an instance of Manager Interaction</strong></p>
+<ol start="2">
+<li>Create an instance of Manager Interaction</li>
+</ol>
 <pre class="prettyprint source lang-js"><code>const interaction = new Manager.Interaction(client, request);
 </code></pre>
-<p><strong>3. Execute requested command</strong></p>
+<ol start="3">
+<li>Execute requested command</li>
+</ol>
 <pre class="prettyprint source lang-js"><code>client.msdm.matchCommand(interaction);
 </code></pre>
-<h2>F. Post guild data to Firestore on guild create</h2>
-<p><strong>1. Listen to <code>guild_create</code></strong></p>
+<h2>F. Creating guild document</h2>
+<ol>
+<li>Listen to <code>guildCreate</code></li>
+</ol>
 <pre class="prettyprint source lang-js"><code>//Triggered when bot becomes a member of a guild
 client.on('guildCreate', async guild => {
   //code here
 })
 </code></pre>
-<p><strong>2. Create guild doc</strong></p>
+<ol start="2">
+<li>Create guild doc</li>
+</ol>
 <pre class="prettyprint source lang-js"><code>guildDb = await client.msdm.guilds.fetch(guild.id);
 await guildDb.create(guild);
 </code></pre>
-<h2>G. Access Manager inside execute</h2>
-<p><strong>1. Access Discord Client instance through the client property of interaction</strong></p>
+<h2>G. Accessing Manager through interaction</h2>
+<ol>
+<li>Access Discord Client instance through the client property of interaction</li>
+</ol>
 <pre class="prettyprint source lang-js"><code>const client = interaction.client;
 </code></pre>
-<p><strong>2. Access manager through the property which you have attached it to(refer to C.2)</strong></p>
+<ol start="2">
+<li>Access manager through the property which you have attached it to(refer to C.2)</li>
+</ol>
 <pre class="prettyprint source lang-js"><code>const manager = client.msdm;
 </code></pre></article>
     </section>
