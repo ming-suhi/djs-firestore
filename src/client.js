@@ -36,6 +36,23 @@ class Client {
     this.local = new LocalClient();
     this.db = new DatabaseManager();
   }
+
+  /**
+   * Finds requested command
+   * @param {Interaction} interaction interaction 
+   */
+   async matchCommand(interaction){
+    await this.local.commands.match(interaction);
+  }
+
+
+  /**
+   * Sync Discord with local commands
+   * @param {Discord.Client} client discord client 
+   */
+  async syncCommands(client) {
+    await this.local.commands.sync(client);
+  }
 }
 
 module.exports = Client;
