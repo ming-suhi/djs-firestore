@@ -1,6 +1,6 @@
 const FirebaseAdmin = require('firebase-admin');
 const DatabaseManager = require('./managers/database.manager.js');
-const {LocalClient} = require('../djs-local-manager/src/index.js');
+const {LocalClient} = require('@ming-suhi/djs-local-manager');
 const dotenv = require('dotenv');
 
 

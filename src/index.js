@@ -1,4 +1,4 @@
-const LocalManager = require('../djs-local-manager/src/index.js');
+const LocalManager = require('@ming-suhi/djs-local-manager');
 
 module.exports = {
   "Client": require('./client.js'),
