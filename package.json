@@ -1,14 +1,24 @@
 {
   "name": "@ming-suhi/djs-manager",
   "version": "1.0.0",
-  "description": "",
+  "description": "Manage Discord Slash Commands in an organized, consistent, and structured manner",
   "main": "src/index.js",
+  "keywords": [
+    "discord-slash-commands",
+    "discord",
+    "discord-slash",
+    "slash-commands",
+    "discord-slash-commands",
+    "discord-commands",
+    "discord-firebase",
+    "discord-firestore",
+    "firestore"
+  ],
   "scripts": {
     "doc": "jsdoc -c jsdoc.json"
   },
-  "keywords": [],
   "author": "明强",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
