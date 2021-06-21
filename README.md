@@ -28,7 +28,6 @@ npm install @ming-suhi/djs-manager
 npm ci
 ```
 
-
 ## B. Setting environment
 
 1. Create a `.env` file in the root directory
@@ -53,7 +52,6 @@ CLIENT_X509_CERT_URL =
 4. Get your Firebase project's `Admin SDK config` file. Store the values as their corresponding keys.
   - `type`, `auth_uri`, `token_uri`, and `auth_provider_x509_cert_url` fields need not to be stored
 
-
 ## C. Setting bot
 
 1. Create an instance of Discord Client
@@ -72,7 +70,6 @@ client.msdm = new Manager.Client();
 ```js
 client.login(client.msdm.token);
 ```
-
 
 ## D. Creating commands
 
@@ -103,15 +100,29 @@ module.exports = new Manager.GlobalCommand({
 });
 ```
 
+## E. Registering commands
 
-## E. Handling commands
+1. Listen to `ready`
+```js
+//Triggers on ready
+client.on('ready', async() => {
+  //code here
+});
+```
+
+2. Sync commands
+```js
+client.msdm.syncCommands(client);
+```
+
+## F. Handling commands
 
 1. Listen to `INTERACTION_CREATE`
 ```js
 //Triggered on Slash Commands
 client.ws.on('INTERACTION_CREATE', async request => {
   //code here
-})
+});
 ```
 
 2. Create an instance of Manager Interaction
@@ -124,24 +135,6 @@ const interaction = new Manager.Interaction(client, request);
 client.msdm.matchCommand(interaction);
 ```
 
-
-## F. Creating guild document
-
-1. Listen to `guildCreate`
-```js
-//Triggered when bot becomes a member of a guild
-client.on('guildCreate', async guild => {
-  //code here
-})
-```
-
-2. Create guild doc
-```js
-guildDb = await client.msdm.guilds.fetch(guild.id);
-await guildDb.create(guild);
-```
-
-
 ## G. Accessing Manager through interaction
 
 1. Access Discord Client instance through the client property of interaction
@@ -153,3 +146,69 @@ const client = interaction.client;
 ```js
 const manager = client.msdm;
 ```
+
+
+## III. Working with the Database
+## A. Creating base documents
+
+1. Listen to `guildCreate`
+```js
+//Triggered when bot becomes a member of a guild
+client.on('guildCreate', async guild => {
+  //code here
+});
+```
+
+2. Create guild doc
+```js
+guildDb = await client.msdm.guilds.fetch(guild.id);
+await guildDb.create(guild);
+```
+
+3. Create user docs
+```js
+const members = await guild.members.fetch();
+for (let member of members) {
+  const memberDb = await guildDB.users.fetch(member.id);
+  await memberDb.create(member);
+}
+```
+
+create method posts to db basic info such as id and name
+
+## B. Updating documents
+
+1. Fetch document
+```js
+const guildDb = await client.msdm.db.guilds.fetch(guildId);
+```
+
+2. Use update method
+```js
+await guildDb.update({"updated": true});
+```
+
+
+## IV. Contributing
+## A. Issues
+This project uses GitHub Issues to track bugs and feature requests. Please search the existing issues before filing new issues to avoid duplicates. For new issues, file your bug or feature request as a new issue.
+
+For help and questions about using this project, please open a GitHub issue.
+
+## B. Pull requests
+
+1. Fork the project.
+
+2. Create a topic branch from master.
+
+3. Make some commits to improve the project.
+
+4. Push this branch to your GitHub project.
+
+5. Open a Pull Request on GitHub.
+
+6. Discuss, and optionally continue committing.
+
+
+## V. License
+MIT © 明suhi

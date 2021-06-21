@@ -152,14 +152,28 @@ module.exports = new Manager.GlobalCommand({
   }
 });
 </code></pre>
-<h2>E. Handling commands</h2>
+<h2>E. Registering commands</h2>
+<ol>
+<li>Listen to <code>ready</code></li>
+</ol>
+<pre class="prettyprint source lang-js"><code>//Triggers on ready
+client.on('ready', async() => {
+  //code here
+});
+</code></pre>
+<ol start="2">
+<li>Sync commands</li>
+</ol>
+<pre class="prettyprint source lang-js"><code>client.msdm.syncCommands(client);
+</code></pre>
+<h2>F. Handling commands</h2>
 <ol>
 <li>Listen to <code>INTERACTION_CREATE</code></li>
 </ol>
 <pre class="prettyprint source lang-js"><code>//Triggered on Slash Commands
 client.ws.on('INTERACTION_CREATE', async request => {
   //code here
-})
+});
 </code></pre>
 <ol start="2">
 <li>Create an instance of Manager Interaction</li>
@@ -171,21 +185,6 @@ client.ws.on('INTERACTION_CREATE', async request => {
 </ol>
 <pre class="prettyprint source lang-js"><code>client.msdm.matchCommand(interaction);
 </code></pre>
-<h2>F. Creating guild document</h2>
-<ol>
-<li>Listen to <code>guildCreate</code></li>
-</ol>
-<pre class="prettyprint source lang-js"><code>//Triggered when bot becomes a member of a guild
-client.on('guildCreate', async guild => {
-  //code here
-})
-</code></pre>
-<ol start="2">
-<li>Create guild doc</li>
-</ol>
-<pre class="prettyprint source lang-js"><code>guildDb = await client.msdm.guilds.fetch(guild.id);
-await guildDb.create(guild);
-</code></pre>
 <h2>G. Accessing Manager through interaction</h2>
 <ol>
 <li>Access Discord Client instance through the client property of interaction</li>
@@ -196,7 +195,71 @@ await guildDb.create(guild);
 <li>Access manager through the property which you have attached it to(refer to C.2)</li>
 </ol>
 <pre class="prettyprint source lang-js"><code>const manager = client.msdm;
-</code></pre></article>
+</code></pre>
+<h2>III. Working with the Database</h2>
+<h2>A. Creating base documents</h2>
+<ol>
+<li>Listen to <code>guildCreate</code></li>
+</ol>
+<pre class="prettyprint source lang-js"><code>//Triggered when bot becomes a member of a guild
+client.on('guildCreate', async guild => {
+  //code here
+});
+</code></pre>
+<ol start="2">
+<li>Create guild doc</li>
+</ol>
+<pre class="prettyprint source lang-js"><code>guildDb = await client.msdm.guilds.fetch(guild.id);
+await guildDb.create(guild);
+</code></pre>
+<ol start="3">
+<li>Create user docs</li>
+</ol>
+<pre class="prettyprint source lang-js"><code>const members = await guild.members.fetch();
+for (let member of members) {
+  const memberDb = await guildDB.users.fetch(member.id);
+  await memberDb.create(member);
+}
+</code></pre>
+<p>create method posts to db basic info such as id and name</p>
+<h2>B. Updating documents</h2>
+<ol>
+<li>Fetch document</li>
+</ol>
+<pre class="prettyprint source lang-js"><code>const guildDb = await client.msdm.db.guilds.fetch(guildId);
+</code></pre>
+<ol start="2">
+<li>Use update method</li>
+</ol>
+<pre class="prettyprint source lang-js"><code>await guildDb.update({&quot;updated&quot;: true});
+</code></pre>
+<h2>IV. Contributing</h2>
+<h2>A. Issues</h2>
+<p>This project uses GitHub Issues to track bugs and feature requests. Please search the existing issues before filing new issues to avoid duplicates. For new issues, file your bug or feature request as a new issue.</p>
+<p>For help and questions about using this project, please open a GitHub issue.</p>
+<h2>B. Pull requests</h2>
+<ol>
+<li>
+<p>Fork the project.</p>
+</li>
+<li>
+<p>Create a topic branch from master.</p>
+</li>
+<li>
+<p>Make some commits to improve the project.</p>
+</li>
+<li>
+<p>Push this branch to your GitHub project.</p>
+</li>
+<li>
+<p>Open a Pull Request on GitHub.</p>
+</li>
+<li>
+<p>Discuss, and optionally continue committing.</p>
+</li>
+</ol>
+<h2>V. License</h2>
+<p>MIT © 明suhi</p></article>
     </section>
 
 
