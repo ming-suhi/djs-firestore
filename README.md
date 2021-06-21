@@ -23,10 +23,6 @@ A package for managing Discord Slash Commands, this package makes use of Firebas
 npm install @ming-suhi/djs-manager
 ```
 
-##### Run npm ci to install dependencies.
-```
-npm ci
-```
 
 ## B. Setting environment
 
