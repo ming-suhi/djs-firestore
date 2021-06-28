@@ -15,8 +15,8 @@ jobs:
     - name: Setup Node
       uses: actions/setup-node@v2
       
-    - name: Install dep
-      run: npm ci
+    - name: Install dependencies
+      run: npm install
     
     - name: get method
       working-directory: tests/guilds-manager
