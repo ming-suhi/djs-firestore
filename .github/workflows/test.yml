@@ -19,13 +19,13 @@ jobs:
       run: npm ci
     
     - name: get method
-      run: jest tests/guilds-manager/get
+      run: node_modules\.bin\jest tests/guilds-manager/get
       
     - name: post method
-      run: jest tests/guilds-manager/post
+      run: node_modules\.bin\jest tests/guilds-manager/post
       
     - name: delete method
-      run: jest tests/guilds-manager/delete
+      run: node_modules\.bin\jest tests/guilds-manager/delete
       
     - name: fetch method
-      run: jest tests/guilds-manager/fetch
+      run: node_modules\.bin\jest tests/guilds-manager/fetch
