@@ -15,6 +15,7 @@
     "firestore"
   ],
   "scripts": {
+    "test": "jest",
     "doc": "jsdoc -c jsdoc.json"
   },
   "author": "明强",
