@@ -23,7 +23,8 @@
     "@ming-suhi/djs-local-manager": "git+https://github.com/ming-suhi/djs-local-manager.git",
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
-    "firebase-admin": "^9.9.0"
+    "firebase-admin": "^9.9.0",
+    "jest": "^27.0.5"
   },
   "repository": {
     "type": "git",

@@ -46,7 +46,7 @@ class GuildsManager extends Collection {
   async delete(id) {
     const docRef = this.reference(id);
     const doc = await this.data(id);
-    docRef.delete();
+    await docRef.delete();
     return doc;
   }
 
