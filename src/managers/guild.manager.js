@@ -26,7 +26,7 @@ class GuildManager extends Document {
    * @param {Discord.Guild} guild
    */
   async create(guild) {
-    await this.update({"id": guild.id, "name": guild.name, "archived": False});
+    await this.update({"id": guild.id, "name": guild.name, "archived": false});
   }
 
 

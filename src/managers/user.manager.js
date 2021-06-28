@@ -26,7 +26,7 @@ class UserManager extends Document {
    * @param {Discord.User} user 
    */
   async create(user) {
-    await self.update({"id": user.id, "name": user.name, "archived": False});
+    await self.update({"id": user.id, "name": user.name, "archived": false});
   }
 
   /**
