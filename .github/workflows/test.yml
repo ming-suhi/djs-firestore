@@ -1,0 +1,35 @@
+name: 🧪 SDK Extension Testing
+
+on: [push, pull_request, workflow_dispatch]
+
+env: ${{ secrets }}
+
+jobs:
+
+  GuildsManager:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup Node
+      uses: actions/setup-node@v2
+      
+    - name: Install dep
+      run: npm ci
+    
+    - name: get method
+      working-directory: tests/guilds-manager
+      run: jest get
+      
+    - name: post method
+      working-directory: tests/guilds-manager
+      run: jest post
+      
+    - name: delete method
+      working-directory: tests/guilds-manager
+      run: jest delete
+      
+    - name: fetch method
+      working-directory: tests/guilds-manager
+      run: jest fetch
