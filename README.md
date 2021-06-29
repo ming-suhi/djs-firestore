@@ -161,11 +161,11 @@ guildDb = await client.msdm.guilds.fetch(guild.id);
 await guildDb.create(guild);
 ```
 
-3. Create user docs
+3. Create member docs
 ```js
 const members = await guild.members.fetch();
 for (let member of members) {
-  const memberDb = await guildDB.users.fetch(member.id);
+  const memberDb = await guildDB.members.fetch(member.id);
   await memberDb.create(member);
 }
 ```

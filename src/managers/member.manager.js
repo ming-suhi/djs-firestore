@@ -1,21 +1,21 @@
 const Document = require("../structures/document")
 
 
-class UserManager extends Document {
+class MemberManager extends Document {
 
   /**
-   * Manages the user doc
-   * Path: db/guilds/{guildID}/users/{userID}
+   * Manages the member doc
+   * Path: db/guilds/{guildID}/members/{userID}
    * @augments Document
    * @param {guildID} guildID guild id
-   * @param {fieldValues} data field values of user doc
-   * @param {userID} data.id id of user doc
-   * @property {documentPath} path absolute path leading to user document
+   * @param {fieldValues} data field values of doc
+   * @param {userID} data.id user id
+   * @property {documentPath} path absolute path leading collection
    * @property {userID} id guild id
    * @property {guildID} guildID guild id
    */
   constructor(guildID, data) {
-    super(`guilds/${guildID}/users/${data.id}`);
+    super(`guilds/${guildID}/members/${data.id}`);
     Object.assign(this, data);
     this.guildID = guildID;
   }
@@ -31,7 +31,7 @@ class UserManager extends Document {
 
   /**
    * Updates field values of docs
-   * @param {fieldValues} data field values of user doc
+   * @param {fieldValues} data field values of doc
    */
   async update(data) {
     await this.reference().set(data, {merge: true});
@@ -54,4 +54,4 @@ class UserManager extends Document {
   }
 }
 
-module.exports = UserManager;
+module.exports = MemberManager;

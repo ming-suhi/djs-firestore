@@ -6,7 +6,7 @@ module.exports = {
   "Document": require('./structures/document.js'),
   "GuildsManager": require('./managers/guilds.manager.js'),
   "GuildManager": require('./managers/guild.manager.js'),
-  "UsersManager": require('./managers/users.manager.js'),
-  "UserManager": require('./managers/user.manager.js'),
+  "MembersManager": require('./managers/members.manager.js'),
+  "MemberManager": require('./managers/member.manager.js'),
   ...LocalManager
 }
