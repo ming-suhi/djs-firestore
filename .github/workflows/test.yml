@@ -45,3 +45,28 @@ jobs:
     
     - name: create method
       run: npm run test tests/guild-manager/create
+
+  MembersManager:
+    needs: GuildManager
+    runs-on: ubuntu-latest
+
+    setps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup Node
+      uses: actions/setup-node@v2
+      
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: get method
+      run: npm run test tests/members-manager/get
+      
+    - name: post method
+      run: npm run test tests/members-manager/post
+      
+    - name: delete method
+      run: npm run test tests/members-manager/delete
+      
+    - name: fetch method
+      run: npm run test tests/members-manager/fetch
