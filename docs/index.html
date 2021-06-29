@@ -210,11 +210,11 @@ client.on('guildCreate', async guild => {
 await guildDb.create(guild);
 </code></pre>
 <ol start="3">
-<li>Create user docs</li>
+<li>Create member docs</li>
 </ol>
 <pre class="prettyprint source lang-js"><code>const members = await guild.members.fetch();
 for (let member of members) {
-  const memberDb = await guildDB.users.fetch(member.id);
+  const memberDb = await guildDB.members.fetch(member.id);
   await memberDb.create(member);
 }
 </code></pre>
