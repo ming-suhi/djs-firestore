@@ -34,7 +34,7 @@ jobs:
     needs: GuildsManager
     runs-on: ubuntu-latest
 
-    setps:
+    steps:
     - uses: actions/checkout@v2
     
     - name: Setup Node
@@ -50,7 +50,7 @@ jobs:
     needs: GuildManager
     runs-on: ubuntu-latest
 
-    setps:
+    steps:
     - uses: actions/checkout@v2
     
     - name: Setup Node
