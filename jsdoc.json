@@ -16,7 +16,21 @@
   "opts": {
     "recurse": true,
     "template": "node_modules/docdash",
+    "tutorials": "./docs/tutorials",
     "destination": "./docs/"
+  },
+  "docdash": {
+    "sectionOrder": [
+      "Tutorials",
+      "Modules",
+      "Classes",
+      "Externals",
+      "Events",
+      "Namespaces",
+      "Mixins",
+      "Interfaces"
+    ],
+    "typedefs": true
   }
 }
 

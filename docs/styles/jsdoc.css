@@ -392,6 +392,7 @@ footer {
 }
 
 .prettyprint {
+  border-radius: 7px;
   font-size: 14px;
   overflow: auto;
 }
