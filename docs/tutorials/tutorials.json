@@ -1,11 +1,29 @@
 {
-  "getting-started": {
-    "title": "Getting Started"
+  "setup": {
+    "title": "Setting Up"
   },
-  "managing-commands": {
-    "title": "Managing Commands"
+  "commands": {
+    "title": "Working with Commands"
   },
-  "managing-database": {
-    "title": "Managing Database"
+  "fields": {
+    "title": "Command Fields"
+  },
+  "subcommand": {
+    "title": "Subcommands"
+  },
+  "subcommandgroup": {
+    "title": "Subcommand Groups"
+  },
+  "sync": {
+    "title": "Synching Command"
+  },
+  "components": {
+    "title": "Working with Components"
+  },
+  "security": {
+    "title": "Setting Up Security"
+  },
+  "database": {
+    "title": "Working with Firestore"
   }
 }

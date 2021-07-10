@@ -36,18 +36,20 @@ class Client {
     this.db = new DatabaseManager();
   }
 
+  
   /**
-   * Finds requested command
-   * @param {Interaction} interaction interaction 
+   * Handles interactions
+   * @param {Discord.Client} client instance of Discord Client 
+   * @param {Discord.Interaction} interaction interaction object
    */
-   async matchCommand(interaction){
-    await this.local.commands.match(interaction);
+  async handleInteraction(client, interaction){
+    await this.local.commands.match(client, interaction);
   }
 
 
   /**
-   * Sync Discord with local commands
-   * @param {Discord.Client} client discord client 
+   * Sync commands in commands folder with Discord
+   * @param {Discord.Client} client instance of Discord Client
    */
   async syncCommands(client) {
     await this.local.commands.sync(client);

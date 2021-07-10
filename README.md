@@ -8,15 +8,16 @@
   </a>
 </p>
 
-<p align="center">Discord.js | Firebase Firestore | @ming-suhi/djs-local-manager</p>
+<p align="center">Powered by Discord.js and Firebase Firestore</p>
 
 
 ## I. About
-A package for managing Discord Slash Commands, this package makes use of Firebase Firestore for database, and @ming-suhi/djs-local-manager for managing local and Discord. For an in-depth documentation visit the <a href="https://ming-suhi.github.io/djs-manager/" target="_blank">official website</a>. For users who want to opt for a similar package without a database manager, check out <a href="https://github.com/ming-suhi/djs-local-manager" target="_blank">@ming-suhi/djs-local-manager</a> from the same developer. 
+A package for managing Discord Interactions; Slash Commands, Button, and Select Menus, that comes with a Database Manager for Firestore. For an in-depth documentation visit the <a href="https://ming-suhi.github.io/djs-manager/" target="_blank">official website</a>. For users who want to opt for a similar package without a database manager, check out <a href="https://github.com/ming-suhi/djs-local-manager" target="_blank">@ming-suhi/djs-local-manager</a> from the same developer. 
 
 
 ## II. Getting Started
-## A. Installing
+
+## A. Installation
 
 ##### Run npm install on the command line or terminal.
 ```
@@ -28,161 +29,171 @@ npm install @ming-suhi/djs-manager
 
 1. Create a `.env` file in the root directory
 
-```env
-BOT_TOKEN = 
+    ```env
+    BOT_TOKEN = 
 
-COMMANDS_FOLDER =
-
-PROJECT_ID =
-PRIVATE_KEY_ID =
-PRIVATE_KEY = 
-CLIENT_EMAIL =
-CLIENT_ID =
-CLIENT_X509_CERT_URL =
-```
+    COMMANDS_FOLDER =
+    ```
 
 2. Get the Discord bot's token and store it as `BOT_TOKEN`.
 
 3. Create a folder to hold command files. Store the folder path from the root as `COMMANDS_FOLDER`.
 
-4. Get your Firebase project's `Admin SDK config` file. Store the values as their corresponding keys.
-  - `type`, `auth_uri`, `token_uri`, and `auth_provider_x509_cert_url` fields need not to be stored
 
 ## C. Setting bot
 
 1. Create an instance of Discord Client
-```js
-const Discord = require('discord.js');
-const client = new Discord.Client();
-```
+    ```js
+    const Discord = require('discord.js');
+    const client = new Discord.Client();
+    ```
 
 2. Attach an instance of Manager Client
-```js
-const Manager = require('@ming-suhi/djs-manager');
-client.msdm = new Manager.Client();
-```
+    ```js
+    const Manager = require('@ming-suhi/djs-manager');
+    client.msdm = new Manager.Client();
+    ```
 
 3. Login bot
-```js
-client.login(client.msdm.token);
-```
+    ```js
+    client.login(client.msdm.token);
+    ```
 
 ## D. Creating commands
 
-1. Create a file inside the commands folder
+1. Create a file inside the commands folder, file name must be the same as command name
 
-2. Require/import `@ming-suhi/djs-manager`
+2. Require/import `Command`
+    ```js
+    const {Command} = require('@ming-suhi/djs-manager');
+    ```
+
+3. Extend `Command`
+    ```js
+    const myCommand = new class extends Command {
+      constructor() {
+        super();
+        // Properties here
+      }
+    }
+    ```
+
+4. Set class properties
+    ```js
+    this.name = "mycommand";
+    this.description = 'my custom command';
+    ```
+
+5. Create `execute` method
+    ```js
+    async execute(service) {
+      await service.sendMessage('Your command has been heard');
+    }
+    ```
+
+6. Export created class
+    ```js
+    module.exports = myCommand;
+    ```
+
+    Example
+    ```js
+    const {Command} = require('@ming-suhi/djs-manager');
+
+    const ping = new class extends Command {
+      constructor() {
+        super();
+        this.name = "ping";
+        this.description = 'pings bot to get latency';
+      }
+
+      async execute(service) {
+        await service.sendMessage('Pong');
+      }
+    }
+
+    module.exports = ping;
+    ```
+
+
+## E. Synching commands
+
+It is suggested to sync commands on client ready. To sync commands just simply call on `syncCommands` method.
+
 ```js
-const Manager = require('@ming-suhi/djs-manager');
-```
-
-3. Create and export instance of GlobalCommand
-```js
-module.exports = new Manager.GlobalCommand(commandData);
-```
-
-Example
-```js
-const Manager = require('@ming-suhi/djs-manager');
-
-module.exports = new Manager.GlobalCommand({
-  name: 'ping',
-  description: 'pings bot to get latency',
-  permissions: ["SEND_MESSAGES"],
-  async execute(interaction) {
-    //send latency to channel
-    interaction.sendMessage(`Bot ping is: ${Math.round(interaction.client.ws.ping)}ms`);
-  }
-});
-```
-
-## E. Registering commands
-
-1. Listen to `ready`
-```js
-//Triggers on ready
 client.on('ready', async() => {
-  //code here
+  client.msdm.syncCommands(client);
 });
 ```
 
-2. Sync commands
+
+## F. Setting interaction handler
+
+This step setups an interaction handler that finds the corresponding file for the requested command. Upon receiving a slash command it calls on the executes method of that command. Upon receiving a button interaction it executes the onPress method, while receiving a select menu interaction executes the onSelect method.
+
 ```js
-client.msdm.syncCommands(client);
+client.ws.on('INTERACTION_CREATE', async interaction => {
+  client.msdm.handleInteraction(client, interaction);
+})
 ```
-
-## F. Handling commands
-
-1. Listen to `INTERACTION_CREATE`
-```js
-//Triggered on Slash Commands
-client.ws.on('INTERACTION_CREATE', async request => {
-  //code here
-});
-```
-
-2. Create an instance of Manager Interaction
-```js
-const interaction = new Manager.Interaction(client, request);
-```
-
-3. Execute requested command
-```js
-client.msdm.matchCommand(interaction);
-```
-
-## G. Accessing Manager through interaction
-
-1. Access Discord Client instance through the client property of interaction
-```js
-const client = interaction.client;
-```
-
-2. Access manager through the property which you have attached it to(refer to C.2)
-```js
-const manager = client.msdm;
-```
-
 
 ## III. Working with the Database
+
 ## A. Creating base documents
 
 1. Listen to `guildCreate`
-```js
-//Triggered when bot becomes a member of a guild
-client.on('guildCreate', async guild => {
-  //code here
-});
-```
+    ```js
+    //Triggered when bot becomes a member of a guild
+    client.on('guildCreate', async guild => {
+      //code here
+    });
+    ```
 
-2. Create guild doc
-```js
-guildDb = await client.msdm.guilds.fetch(guild.id);
-await guildDb.create(guild);
-```
+2. Create guild doc. Fetch a pseduo-doc(not yet existing doc), and post to it basic infos. Create method posts name and id.
+    ```js
+    guildDb = await db.guilds.fetch(guild.id);
+    await guildDb.create(guild);
+    ```
 
-3. Create member docs
-```js
-const members = await guild.members.fetch();
-for (let member of members) {
-  const memberDb = await guildDB.members.fetch(member.id);
-  await memberDb.create(member);
-}
-```
+3. Create member docs. Loop through guild members and do the same process as with the earlier process for the guilds.
+    ```js
+    const members = await guild.members.fetch();
+    for (let member of members) {
+      const memberDb = await guildDB.members.fetch(member.id);
+      await memberDb.create(member);
+    }
+    ```
 
-create method posts to db basic info such as id and name
+   Resulting Code:
+    ```js
+    client.on('guildCreate', async guild => {
+      guildDb = await db.guilds.fetch(guild.id);
+      await guildDb.create(guild);
+      const members = await guild.members.fetch();
+      for (let member of members) {
+        const memberDb = await guildDB.members.fetch(member.id);
+        await memberDb.create(member);
+      }
+    });
+    ```
 
 ## B. Updating documents
 
 1. Fetch document
-```js
-const guildDb = await client.msdm.db.guilds.fetch(guildId);
-```
+    ```js
+    const guildDb = await db.guilds.fetch(guildId);
+    ```
 
 2. Use update method
-```js
-await guildDb.update({"updated": true});
-```
+    ```js
+    await guildDb.update({"updated": true});
+    ```
+
+   Resulting Code:
+    ```js
+    const guildDb = await db.guilds.fetch(guildId);
+    await guildDb.update({"updated": true});
+    ```
 
 
 ## IV. Contributing
