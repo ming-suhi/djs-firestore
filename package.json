@@ -1,17 +1,16 @@
 {
   "name": "@ming-suhi/djs-manager",
-  "version": "1.0.1",
-  "description": "Manage Discord Slash Commands in an organized, consistent, and structured manner",
+  "version": "2.0.0",
+  "description": "Manage all Discord Interactions; Slash Commands, Button, and Select Menus, and your Firstore Database all with one package",
   "main": "src/index.js",
   "keywords": [
-    "discord-slash-commands",
     "discord",
+    "discord-interactions",
     "discord-slash",
-    "slash-commands",
+    "discord-buttons",
+    "discord-select-menus",
     "discord-slash-commands",
-    "discord-commands",
-    "discord-firebase",
-    "discord-firestore",
+    "discord-manager",
     "firestore"
   ],
   "scripts": {
