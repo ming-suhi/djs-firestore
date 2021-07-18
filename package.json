@@ -1,6 +1,6 @@
 {
   "name": "@ming-suhi/djs-manager",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "Manage all Discord Interactions; Slash Commands, Button, and Select Menus, and your Firstore Database all with one package",
   "main": "src/index.js",
   "keywords": [
