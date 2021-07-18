@@ -12,7 +12,7 @@ class GuildManager extends Document {
    * @param {guildID} data.id id of guild doc
    * @property {guildID} id id of guild doc
    * @property {documentPath} path absolute path leading to document
-   * @property {UsersManager} users manage users
+   * @property {MembersManager} users manage users
    */
   constructor(data) {
     super(`guilds/${data.id}`);

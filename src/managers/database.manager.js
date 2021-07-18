@@ -1,4 +1,5 @@
 const GuildsManager = require('./guilds.manager.js');
+const UsersManager = require('./users.manager.js');
 
 
 class DatabaseManager {
@@ -10,6 +11,7 @@ class DatabaseManager {
    */
   constructor() {
     this.guilds = new GuildsManager();
+    this.users = new UsersManager();
   }
 }
 

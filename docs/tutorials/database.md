@@ -74,3 +74,6 @@
     const guildDb = await db.guilds.fetch(guildId);
     await guildDb.update({"updated": true});
     ```
+
+## Users vs Members
+User docs are stored outside a guild, thus it can be accessed with user id alone. Member docs are the opposite which needs a guild id to be accessed.

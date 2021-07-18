@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Tutorial: Working with Commands - Documentation</title>
+    <title>UserManager - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,84 +32,808 @@
 
 <div id="main">
     
-    <h1 class="page-title">Tutorial: Working with Commands</h1>
+    <h1 class="page-title">UserManager</h1>
     
 
-    <section>
+    
+
+
+
+
+<section>
 
 <header>
     
-
-    <h2>Working with Commands</h2>
+        <h2>
+        UserManager
+        </h2>
+        
+    
 </header>
 
 <article>
-    <h2>Creating basic commands</h2>
-<ol>
-<li>
-<p>Create a file inside the commands folder, file name must be the same as command name</p>
-</li>
-<li>
-<p>Require/import <code>Command</code></p>
-<pre class="prettyprint source lang-js"><code>const {Command} = require('@ming-suhi/djs-manager');
-</code></pre>
-</li>
-<li>
-<p>Extend <code>Command</code></p>
-<pre class="prettyprint source lang-js"><code>const myCommand = new class extends Command {
-  constructor() {
-    super();
-    // Properties here
-  }
-}
-</code></pre>
-</li>
-<li>
-<p>Set class properties</p>
-<pre class="prettyprint source lang-js"><code>this.name = &quot;mycommand&quot;;
-this.description = 'my custom command';
-</code></pre>
-</li>
-<li>
-<p>Create <code>execute</code> method</p>
-<pre class="prettyprint source lang-js"><code>async execute(service) {
-  await service.sendMessage('Your command has been heard');
-}
-</code></pre>
-</li>
-<li>
-<p>Export created class</p>
-<pre class="prettyprint source lang-js"><code>module.exports = myCommand;
-</code></pre>
-<p>Example</p>
-<pre class="prettyprint source lang-js"><code>const {Command} = require('@ming-suhi/djs-manager');
+    
+        <div class="container-overview">
+        
+            
 
-const ping = new class extends Command {
-  constructor() {
-    super();
-    this.name = &quot;ping&quot;;
-    this.description = 'pings bot to get latency';
-  }
+    
 
-  async execute(service) {
-    await service.sendMessage('Pong');
-  }
-}
+    <h4 class="name" id="UserManager"><span class="type-signature"></span>new UserManager<span class="signature">(data)</span><span class="type-signature"></span></h4>
 
-module.exports = ping;
-</code></pre>
-</li>
-</ol>
-<h2>Understanding service parameter</h2>
-<p><code>service</code> is a copy of interaction object, with added tools to aid in interacting with Discord. You can look up for InteractionService class here to know more about the tools it can offer. You can look up interaction object in Discord Developer portal to know more about the properties.</p>
-<h2>Stating a response type</h2>
-<p>responseType property defaults to 4 (respond with a message)</p>
-<p>To state a response type simply access responseType through service parameter</p>
-<pre class="prettyprint source lang-js"><code>service.responseType = 5
-</code></pre>
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#userID">userID</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>id of user doc</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>path</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#documentPath">documentPath</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>absolute path leading to document</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<div class="description usertext">
+    <p>Manages the user doc
+Path: db/users/{userID}</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#fieldValues">fieldValues</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>field values of user doc</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#userID">userID</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>id of user doc</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        </div>
+    
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li><a href="Document.html">Document</a></li>
+    </ul>
+
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="create"><span class="type-signature">(async) </span>create<span class="signature">(user)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Set ups user docuemnt</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>user</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Discord.User</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="data"><span class="type-signature">(async) </span>data<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="global.html#docData">docData</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Document.html#data">Document#data</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Gets document's field values</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>doc field values</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#docData">docData</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="reference"><span class="type-signature"></span>reference<span class="signature">()</span><span class="type-signature"> &rarr; {Firestore.DocumentReference}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Document.html#reference">Document#reference</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Gets document reference</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>reference to doc</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Firestore.DocumentReference</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="update"><span class="type-signature">(async) </span>update<span class="signature">(data)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Updates field values of docs</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#fieldValues">fieldValues</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>field values of user doc</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
 </article>
 
 </section>
+
+
+
 
     
     
