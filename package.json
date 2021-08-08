@@ -1,37 +1,29 @@
 {
-  "name": "@ming-suhi/djs-manager",
-  "version": "2.4.0",
-  "description": "Manage all Discord Interactions; Slash Commands, Button, and Select Menus, and your Firstore Database all with one package",
-  "main": "src/index.js",
-  "keywords": [
-    "discord",
-    "discord-interactions",
-    "discord-slash",
-    "discord-buttons",
-    "discord-select-menus",
-    "discord-slash-commands",
-    "discord-manager",
-    "firestore"
-  ],
+  "name": "@ming-suhi/djs-firestore",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "doc": "jsdoc -c jsdoc.json"
-  },
-  "author": "明强",
-  "license": "MIT",
-  "dependencies": {
-    "@ming-suhi/djs-local-manager": "git+https://github.com/ming-suhi/djs-local-manager.git",
-    "discord.js": "^12.5.3",
-    "dotenv": "^10.0.0",
-    "firebase-admin": "^9.9.0"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ming-suhi/djs-manager.git"
+    "url": "git+https://github.com/ming-suhi/djs-manager.git"
   },
+  "author": "明suhi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ming-suhi/djs-manager/issues"
+  },
+  "homepage": "https://github.com/ming-suhi/djs-manager#readme",
   "devDependencies": {
-    "docdash": "^1.2.0",
     "jest": "^27.0.6",
-    "jsdoc": "^3.6.7"
+    "ts-node": "^10.1.0",
+    "typedoc": "^0.21.5",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "firebase-admin": "^9.11.0"
   }
 }
