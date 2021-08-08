@@ -1,7 +1,7 @@
 {
   "name": "@ming-suhi/djs-firestore",
   "version": "0.0.1",
-  "description": "",
+  "description": "A package for managing your Discord bot's structured Firestore.",
   "main": "dist/index.js",
   "module": "src/index.ts",
   "types": "dist/index.d.ts",
@@ -11,14 +11,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ming-suhi/djs-manager.git"
+    "url": "git+https://github.com/ming-suhi/djs-firestore.git"
   },
+  "keywords": [
+    "discord",
+    "discord-firestore",
+    "discord-database",
+    "structured-database",
+    "discord-manager"
+  ],
   "author": "明suhi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ming-suhi/djs-manager/issues"
+    "url": "https://github.com/ming-suhi/djs-firestore/issues"
   },
-  "homepage": "https://github.com/ming-suhi/djs-manager#readme",
+  "homepage": "https://github.com/ming-suhi/djs-firestore#readme",
   "devDependencies": {
     "jest": "^27.0.6",
     "ts-node": "^10.1.0",

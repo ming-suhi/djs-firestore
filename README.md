@@ -29,7 +29,7 @@ npm install @ming-suhi/djs-firestore
 
 1. Create a `.env` file in the root directory
 
-    ```env
+    ```
     PROJECT_ID=
     CLIENT_EMAIL=
     PRIVATE_KEY=
