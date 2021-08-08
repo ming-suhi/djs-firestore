@@ -25,6 +25,13 @@ describe('SDK estension', () => {
     expect(await document.data()).toEqual(testDocument);
   });
 
+  it('should update a document', async() => {
+    const document = new Document('testWrite/testDocument');
+    await document.update({updated: true});
+    testDocument.updated = true;
+    expect(await document.data()).toEqual(testDocument);
+  });
+
   it('should delete a document', async() => {
     const document = new Document('testWrite/testDocument');
     await document.delete();
