@@ -1,4 +1,4 @@
-name: 🧪 SDK Extension Testing
+name: 🧪 SDK Extendsion Testing
 
 on: [push, pull_request, workflow_dispatch]
 
@@ -6,83 +6,22 @@ env: ${{ secrets }}
 
 jobs:
 
-  GuildsManager:
+  Client:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
-    
+
     - name: Setup Node
       uses: actions/setup-node@v2
-      
-    - name: Install dependencies
+      with:
+        node-version: 16.6.1
+
+    - name: Install Dependencies
       run: npm ci
-    
-    - name: get method
-      run: npm run test tests/guilds-manager/get
-      
-    - name: post method
-      run: npm run test tests/guilds-manager/post
-      
-    - name: delete method
-      run: npm run test tests/guilds-manager/delete
-      
-    - name: fetch method
-      run: npm run test tests/guilds-manager/fetch
 
-  GuildManager:
-    needs: GuildsManager
-    runs-on: ubuntu-latest
+    - name: Build Dist
+      run: npm run build
 
-    steps:
-    - uses: actions/checkout@v2
-    
-    - name: Setup Node
-      uses: actions/setup-node@v2
-      
-    - name: Install dependencies
-      run: npm ci
-    
-    - name: create method
-      run: npm run test tests/guild-manager/create
-
-  MembersManager:
-    needs: GuildManager
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    
-    - name: Setup Node
-      uses: actions/setup-node@v2
-      
-    - name: Install dependencies
-      run: npm ci
-    
-    - name: get method
-      run: npm run test tests/members-manager/get
-      
-    - name: post method
-      run: npm run test tests/members-manager/post
-      
-    - name: delete method
-      run: npm run test tests/members-manager/delete
-      
-    - name: fetch method
-      run: npm run test tests/members-manager/fetch
-
-  MemberManager:
-    needs: MembersManager
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    
-    - name: Setup Node
-      uses: actions/setup-node@v2
-      
-    - name: Install dependencies
-      run: npm ci
-    
-    - name: create method
-      run: npm run test tests/member-manager/create
+    - name: Tests
+      run: npm run test

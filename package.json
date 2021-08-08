@@ -1,37 +1,39 @@
 {
-  "name": "@ming-suhi/djs-manager",
-  "version": "2.4.0",
-  "description": "Manage all Discord Interactions; Slash Commands, Button, and Select Menus, and your Firstore Database all with one package",
-  "main": "src/index.js",
-  "keywords": [
-    "discord",
-    "discord-interactions",
-    "discord-slash",
-    "discord-buttons",
-    "discord-select-menus",
-    "discord-slash-commands",
-    "discord-manager",
-    "firestore"
-  ],
+  "name": "@ming-suhi/djs-firestore",
+  "version": "0.0.1",
+  "description": "A package for managing your Discord bot's structured Firestore.",
+  "main": "dist/index.js",
+  "module": "src/index.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "jest",
-    "doc": "jsdoc -c jsdoc.json"
-  },
-  "author": "明强",
-  "license": "MIT",
-  "dependencies": {
-    "@ming-suhi/djs-local-manager": "git+https://github.com/ming-suhi/djs-local-manager.git",
-    "discord.js": "^12.5.3",
-    "dotenv": "^10.0.0",
-    "firebase-admin": "^9.9.0"
+    "build": "tsc -p tsconfig.json",
+    "test": "jest --detectOpenHandles"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ming-suhi/djs-manager.git"
+    "url": "git+https://github.com/ming-suhi/djs-firestore.git"
   },
+  "keywords": [
+    "discord",
+    "discord-firestore",
+    "discord-database",
+    "structured-database",
+    "discord-manager"
+  ],
+  "author": "明suhi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ming-suhi/djs-firestore/issues"
+  },
+  "homepage": "https://github.com/ming-suhi/djs-firestore#readme",
   "devDependencies": {
-    "docdash": "^1.2.0",
     "jest": "^27.0.6",
-    "jsdoc": "^3.6.7"
+    "ts-node": "^10.1.0",
+    "typedoc": "^0.21.5",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "firebase-admin": "^9.11.0"
   }
 }
