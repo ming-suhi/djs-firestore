@@ -47,7 +47,7 @@ export class GuildsCollection extends Collection {
 export class GuildDocument extends Document {
   /** Guild id */
   guildID: string;
-  /** Structure for managing member documents */
+  /** Manage member documents */
   members: MembersCollection;
 
   constructor(guildID: string) {
