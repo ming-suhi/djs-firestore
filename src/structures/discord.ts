@@ -1,5 +1,32 @@
 import { Collection, Document } from "./firestore";
 
+/** Structure for managing user documents */
+export class UsersCollection extends Collection {
+  constructor() {
+    super(`users`);
+  }
+
+  /**
+   * Fetch a user document
+   * @param userID Guild id
+   * @returns User document
+   */
+  async fetch(userID: string): Promise<UserDocument> {
+    return new UserDocument(userID);
+  }
+}
+
+/** Structure for managing a specific user document */
+export class UserDocument extends Document {
+  /** User id */
+  userID: string;
+
+  constructor(userID: string) {
+    super(`users/${userID}`);
+    this.userID = userID;
+  }
+}
+
 /** Structure for managing guild documents */
 export class GuildsCollection extends Collection {
   constructor() {
