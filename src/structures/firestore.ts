@@ -30,6 +30,21 @@ export class Document {
     const doc = await this.reference.get();
     return doc.data();
   }
+
+  /**
+   * Updates document
+   * @param data Document data
+   */
+  async update(data: any): Promise<void> {
+    await this.reference.set(data, {merge: true});
+  }
+
+  /**
+   * Delete this document
+   */
+   async delete(): Promise<void> {
+    await this.reference.delete();
+  }
 }
 
 /** Structure for managing a specific collection */
