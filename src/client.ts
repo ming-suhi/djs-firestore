@@ -1,16 +1,11 @@
 import FirebaseAdmin, { ServiceAccount } from 'firebase-admin';
 import dotenv from 'dotenv';
-import { UsersCollection, GuildsCollection } from './structures/discord';
+
+dotenv.config();
 
 /** Main structure for managing database */
 export class FirestoreManager {
-  /** Manage user documents */
-  users: UsersCollection;
-  /** Manage guild documents */
-  guilds: GuildsCollection;
-
   constructor() {
-    dotenv.config();
 
     const serviceAccount: ServiceAccount = {
       projectId: process.env.PROJECT_ID,
@@ -21,8 +16,5 @@ export class FirestoreManager {
     FirebaseAdmin.initializeApp({
       credential: FirebaseAdmin.credential.cert(serviceAccount)
     })
-
-    this.users = new UsersCollection();
-    this.guilds = new GuildsCollection();
   }
 }
