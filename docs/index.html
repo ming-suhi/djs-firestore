@@ -99,12 +99,16 @@
 					<h2>C. Setting up manager</h2>
 				</a>
 				<ol>
-					<li><p>Require <code>FirestoreManager</code> </p>
+					<li><p>Require <code>FirestoreManager</code></p>
 						<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">FirestoreManager</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;@ming-suhi/djs-firestore&#039;</span><span style="color: #000000">);</span>
 </code></pre>
 					</li>
 					<li><p>Attach an instance to discord client.</p>
 						<pre><code class="language-js"><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #001080">db</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">FirestoreManager</span><span style="color: #000000">();</span>
+</code></pre>
+					</li>
+					<li><p>Initialize guilds.</p>
+						<pre><code class="language-js"><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #001080">db</span><span style="color: #000000">.</span><span style="color: #795E26">initializeGuilds</span><span style="color: #000000">(</span><span style="color: #001080">client</span><span style="color: #000000">);</span>
 </code></pre>
 					</li>
 				</ol>
@@ -118,21 +122,19 @@
 <span style="color: #000000">});</span>
 </code></pre>
 					</li>
-					<li><p>Create guild doc. Fetch a pseduo-doc(not yet existing doc), and post to it basic infos.</p>
-						<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">guildDb</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #001080">db</span><span style="color: #000000">.</span><span style="color: #001080">guilds</span><span style="color: #000000">.</span><span style="color: #795E26">fetch</span><span style="color: #000000">(</span><span style="color: #001080">guild</span><span style="color: #000000">.</span><span style="color: #001080">id</span><span style="color: #000000">);</span>
-<span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">guildDb</span><span style="color: #000000">.</span><span style="color: #795E26">update</span><span style="color: #000000">({</span><span style="color: #001080">id:</span><span style="color: #000000"> </span><span style="color: #001080">guild</span><span style="color: #000000">.</span><span style="color: #001080">id</span><span style="color: #000000">, </span><span style="color: #001080">name:</span><span style="color: #000000"> </span><span style="color: #001080">guild</span><span style="color: #000000">.</span><span style="color: #001080">name</span><span style="color: #000000">});</span>
-</code></pre>
-					</li>
-					<li><p>Listen to <code>guildMemberAdd</code>
-							```js
-							client.on(&#39;guildMemberAdd&#39;, async member =&gt; {
-							// Code here
-						})</p>
-					</li>
-					<li><p>Create member doc. Fetch a pseduo-doc(not yet existing doc), and post to it basic infos.</p>
-						<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">guildDb</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #001080">db</span><span style="color: #000000">.</span><span style="color: #001080">guilds</span><span style="color: #000000">.</span><span style="color: #795E26">fetch</span><span style="color: #000000">(</span><span style="color: #001080">member</span><span style="color: #000000">.</span><span style="color: #001080">guild</span><span style="color: #000000">.</span><span style="color: #001080">id</span><span style="color: #000000">);</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">memberDb</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">guildDb</span><span style="color: #000000">.</span><span style="color: #001080">members</span><span style="color: #000000">.</span><span style="color: #795E26">fetch</span><span style="color: #000000">(</span><span style="color: #001080">member</span><span style="color: #000000">.</span><span style="color: #001080">user</span><span style="color: #000000">.</span><span style="color: #001080">id</span><span style="color: #000000">);</span>
-<span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">memberDb</span><span style="color: #000000">.</span><span style="color: #795E26">update</span><span style="color: #000000">({</span><span style="color: #001080">id:</span><span style="color: #000000"> </span><span style="color: #001080">member</span><span style="color: #000000">.</span><span style="color: #001080">user</span><span style="color: #000000">.</span><span style="color: #001080">id</span><span style="color: #000000">, </span><span style="color: #001080">name:</span><span style="color: #000000"> </span><span style="color: #001080">member</span><span style="color: #000000">.</span><span style="color: #001080">user</span><span style="color: #000000">.</span><span style="color: #001080">username</span><span style="color: #000000">});</span>
+					<li><p>Create guild doc.</p>
+						<pre><code class="language-js"><span style="color: #008000">// If needed require GuildDocument</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">GuildDocument</span><span style="color: #000000"> } = = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;@ming-suhi/djs-firestore&#039;</span><span style="color: #000000">);</span>
+<span style="color: #008000">// Check if a guild doc for the guild exist</span>
+<span style="color: #0000FF">var</span><span style="color: #000000"> </span><span style="color: #001080">guildDb</span><span style="color: #000000"> = </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #001080">db</span><span style="color: #000000">.</span><span style="color: #001080">guilds</span><span style="color: #000000">.</span><span style="color: #795E26">get</span><span style="color: #000000">(</span><span style="color: #001080">guild</span><span style="color: #000000">.</span><span style="color: #001080">id</span><span style="color: #000000">);</span>
+<span style="color: #008000">// If not existing create document</span>
+<span style="color: #AF00DB">if</span><span style="color: #000000"> (!</span><span style="color: #001080">guildDb</span><span style="color: #000000">) {</span>
+<span style="color: #000000">  </span><span style="color: #0000FF">var</span><span style="color: #000000"> </span><span style="color: #001080">guildDb</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">GuildDocument</span><span style="color: #000000">(</span><span style="color: #001080">guild</span><span style="color: #000000">.</span><span style="color: #001080">id</span><span style="color: #000000">);</span>
+<span style="color: #000000">  </span><span style="color: #001080">guildDb</span><span style="color: #000000">.</span><span style="color: #795E26">initialize</span><span style="color: #000000">();</span>
+<span style="color: #000000">  </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">guildDb</span><span style="color: #000000">.</span><span style="color: #795E26">update</span><span style="color: #000000">({</span><span style="color: #001080">id:</span><span style="color: #000000"> </span><span style="color: #001080">guild</span><span style="color: #000000">.</span><span style="color: #001080">id</span><span style="color: #000000">, </span><span style="color: #001080">name:</span><span style="color: #000000"> </span><span style="color: #001080">guild</span><span style="color: #000000">.</span><span style="color: #001080">name</span><span style="color: #000000">});</span>
+<span style="color: #000000">  </span><span style="color: #008000">// Put a reference to guilds</span>
+<span style="color: #000000">  </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #001080">db</span><span style="color: #000000">.</span><span style="color: #001080">guilds</span><span style="color: #000000">.</span><span style="color: #795E26">set</span><span style="color: #000000">(</span><span style="color: #001080">guild</span><span style="color: #000000">.</span><span style="color: #001080">id</span><span style="color: #000000">, </span><span style="color: #001080">guildDb</span><span style="color: #000000">);</span>
+<span style="color: #000000">}</span>
 </code></pre>
 					</li>
 				</ol>
@@ -140,19 +142,19 @@
 					<h2>E. Other methods</h2>
 				</a>
 				<ol>
-					<li><p>Get data method</p>
-						<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">guildDb</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #001080">db</span><span style="color: #000000">.</span><span style="color: #001080">guilds</span><span style="color: #000000">.</span><span style="color: #795E26">fetch</span><span style="color: #000000">(</span><span style="color: #001080">guildId</span><span style="color: #000000">);</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">data</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">guildDb</span><span style="color: #000000">.</span><span style="color: #795E26">data</span><span style="color: #000000">();</span>
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">data</span><span style="color: #000000">);</span>
+					<li><p>Get field method</p>
+						<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">guildDb</span><span style="color: #000000"> = </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #001080">db</span><span style="color: #000000">.</span><span style="color: #001080">guilds</span><span style="color: #000000">.</span><span style="color: #795E26">get</span><span style="color: #000000">(</span><span style="color: #001080">guildId</span><span style="color: #000000">);</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">fieldValue</span><span style="color: #000000"> = </span><span style="color: #001080">guildDb</span><span style="color: #000000">.</span><span style="color: #795E26">get</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;fieldName&#039;</span><span style="color: #000000">);</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">fieldValue</span><span style="color: #000000">);</span>
 </code></pre>
 					</li>
 					<li><p>Update method</p>
-						<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">guildDb</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #001080">db</span><span style="color: #000000">.</span><span style="color: #001080">guilds</span><span style="color: #000000">.</span><span style="color: #795E26">fetch</span><span style="color: #000000">(</span><span style="color: #001080">guildId</span><span style="color: #000000">);</span>
+						<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">guildDb</span><span style="color: #000000"> = </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #001080">db</span><span style="color: #000000">.</span><span style="color: #001080">guilds</span><span style="color: #000000">.</span><span style="color: #795E26">get</span><span style="color: #000000">(</span><span style="color: #001080">guildId</span><span style="color: #000000">);</span>
 <span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">guildDb</span><span style="color: #000000">.</span><span style="color: #795E26">update</span><span style="color: #000000">({</span><span style="color: #A31515">&quot;updated&quot;</span><span style="color: #001080">:</span><span style="color: #000000"> </span><span style="color: #0000FF">true</span><span style="color: #000000">});</span>
 </code></pre>
 					</li>
 					<li><p>Delete method</p>
-						<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">guildDb</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #001080">db</span><span style="color: #000000">.</span><span style="color: #001080">guilds</span><span style="color: #000000">.</span><span style="color: #795E26">fetch</span><span style="color: #000000">(</span><span style="color: #001080">guildId</span><span style="color: #000000">);</span>
+						<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">guildDb</span><span style="color: #000000"> = </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #001080">db</span><span style="color: #000000">.</span><span style="color: #001080">guilds</span><span style="color: #000000">.</span><span style="color: #795E26">get</span><span style="color: #000000">(</span><span style="color: #001080">guildId</span><span style="color: #000000">);</span>
 <span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">guildDb</span><span style="color: #000000">.</span><span style="color: #795E26">delete</span><span style="color: #000000">();</span>
 </code></pre>
 					</li>
@@ -199,9 +201,6 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class">
-						<a href="classes/Collection.html" class="tsd-kind-icon">Collection</a>
-					</li>
-					<li class=" tsd-kind-class">
 						<a href="classes/Document.html" class="tsd-kind-icon">Document</a>
 					</li>
 					<li class=" tsd-kind-class">
@@ -209,21 +208,6 @@
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/GuildDocument.html" class="tsd-kind-icon">Guild<wbr>Document</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/GuildsCollection.html" class="tsd-kind-icon">Guilds<wbr>Collection</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/MemberDocument.html" class="tsd-kind-icon">Member<wbr>Document</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/MembersCollection.html" class="tsd-kind-icon">Members<wbr>Collection</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/UserDocument.html" class="tsd-kind-icon">User<wbr>Document</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/UsersCollection.html" class="tsd-kind-icon">Users<wbr>Collection</a>
 					</li>
 				</ul>
 			</nav>
@@ -242,6 +226,12 @@
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
 			</ul>
 		</div>
 	</div>
