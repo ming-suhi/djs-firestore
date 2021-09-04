@@ -1,78 +1,62 @@
 import { firestore } from 'firebase-admin';
-import { DocumentReference, CollectionReference, DocumentData } from '@google-cloud/firestore';
-import { getDocs } from '../utilities/firestore';
+import { DocumentReference, DocumentData, DocumentSnapshot } from '@google-cloud/firestore';
 
 /** Structure for managing a specific document */
 export class Document {
-  /** Path from root */
-  path: string;
+  /** Document reference */
+  public readonly reference: DocumentReference;
+  /** Document data */
+  protected data?: DocumentData;
+  /** Document last write */
+  private _deleted: boolean = false;
 
   /**
-   * @param path Path from root
+   * @param path Document absolute path
    */
   constructor(path: string) {
-    this.path = path;
+    this.reference = firestore().doc(path);
   }
 
   /**
-   * Get reference
-   * @returns Document reference
+   * Store data to class, and add listener
    */
-  get reference(): DocumentReference {
-    return firestore().doc(this.path);
+  public async initialize() {
+    const document = await this.reference.get();
+    this.data = document.data();
+    this.reference.onSnapshot(async(snapshot: DocumentSnapshot) => {
+      this.data = snapshot.data();
+    });
   }
 
   /**
-   * Get data
-   * @returns Document data
+   * If document was deleted
    */
-  async data(): Promise<DocumentData|undefined> {
-    const doc = await this.reference.get();
-    return doc.data();
+  public get deleted(): boolean {
+    return this._deleted;
+  } 
+
+  /**
+   * Get document field
+   * @param name Field name
+   * @returns Field value
+   */
+  public get(name: string) {
+    return this.data?.[name];
   }
 
   /**
-   * Updates document
+   * Update document field
    * @param data Document data
    */
-  async update(data: any): Promise<void> {
-    await this.reference.set(data, {merge: true});
+  public async update(data: any) {
+    await this.reference.set(data, { merge: true });
   }
 
   /**
-   * Delete this document
+   * Delete document
    */
-   async delete(): Promise<void> {
+  public async delete() {
     await this.reference.delete();
-  }
-}
-
-/** Structure for managing a specific collection */
-export class Collection {
-  /** Path from root */
-  path: string;
-
-  /**
-   * @param path Path from root
-   */
-  constructor(path: string) {
-    this.path = path;
-  }
-
-  /**
-   * Get reference
-   * @returns Collection reference
-   */
-  get reference(): CollectionReference {
-    return firestore().collection(this.path);
-  }
-
-  /**
-   * Get documents data
-   * @returns Document data
-   */
-  async data(): Promise<Array<DocumentData|undefined>> {
-    const collection = await this.reference.get();
-    return getDocs(collection);
+    this._deleted = true;
   }
 }

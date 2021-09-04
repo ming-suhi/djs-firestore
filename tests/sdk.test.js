@@ -1,6 +1,11 @@
-const { FirestoreManager, Collection, Document } = require('../dist/index');
+const { FirestoreManager, Document } = require('../dist/index');
+const { FieldValue } = require('@google-cloud/firestore');
 
-var testDocument = {
+async function sleep() {
+  await new Promise(r => setTimeout(r, 500));
+}
+
+const testDocument = {
   testField: "testValue"
 }
 
@@ -8,33 +13,38 @@ var testDocument = {
 describe('SDK estension', () => {
 
   const manager = new FirestoreManager();
+  const document = new Document('testCollection/testDocument');
+  const createdDocument = new Document('testCollection/createdDocument');
 
-  it('should get a collection', async() => {
-    const collection = new Collection('testCollection');
-    expect(await collection.data()).toEqual([testDocument])
+  it('should get a document field', async() => {
+    await document.initialize();
+    await sleep();
+    expect(await document.get('testField')).toEqual('testValue')
   });
 
-  it('should get a document', async() => {
-    const document = new Document('testCollection/testDocument');
-    expect(await document.data()).toEqual(testDocument)
+  it('should update a document field', async() => {
+    await document.update({ updated: true });
+    await sleep();
+    expect(await document.get('updated')).toEqual(true);
+  });
+
+  it('should delete a document field', async() => {
+    await document.update({ updated: FieldValue.delete() });
+    await sleep();
+    expect(await document.get('updated')).toEqual(undefined);
   });
 
   it('should create a document', async() => {
-    const document = new Document('testWrite/testDocument');
-    await document.update(testDocument);
-    expect(await document.data()).toEqual(testDocument);
-  });
-
-  it('should update a document', async() => {
-    const document = new Document('testWrite/testDocument');
-    await document.update({updated: true});
-    testDocument.updated = true;
-    expect(await document.data()).toEqual(testDocument);
+    await createdDocument.initialize();
+    await sleep();
+    await createdDocument.update({ exists: true });
+    await sleep();
+    expect(await createdDocument.get('exists')).toEqual(true);
   });
 
   it('should delete a document', async() => {
-    const document = new Document('testWrite/testDocument');
-    await document.delete();
-    expect(await new Document('testWrite/testDocument').data()).toEqual(undefined);
+    await createdDocument.delete();
+    await sleep();
+    expect(await createdDocument.deleted).toEqual(true);
   });
-})
+});

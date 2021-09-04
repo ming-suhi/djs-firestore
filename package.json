@@ -1,13 +1,13 @@
 {
   "name": "@ming-suhi/djs-firestore",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A package for managing your Discord bot's structured Firestore.",
   "main": "dist/index.js",
   "module": "src/index.ts",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles --forceExit"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/ming-suhi/djs-firestore#readme",
   "devDependencies": {
+    "discord.js": "^13.1.0",
     "jest": "^27.0.6",
     "ts-node": "^10.1.0",
     "typedoc": "^0.21.5",
