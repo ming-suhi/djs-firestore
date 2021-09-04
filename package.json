@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/ming-suhi/djs-firestore#readme",
   "devDependencies": {
+    "discord.js": "^13.1.0",
     "jest": "^27.0.6",
     "ts-node": "^10.1.0",
     "typedoc": "^0.21.5",
