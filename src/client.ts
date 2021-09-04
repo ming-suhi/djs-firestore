@@ -8,7 +8,7 @@ dotenv.config();
 /** Main structure for managing database */
 export class FirestoreManager {
   /** Guild documents */
-  public guilds: Map<string, any> = new Map;
+  public guilds: Map<string, GuildDocument> = new Map;
 
   constructor() {
     const serviceAccount: ServiceAccount = {

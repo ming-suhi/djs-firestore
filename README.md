@@ -39,7 +39,7 @@ npm install @ming-suhi/djs-firestore
 
 ## C. Setting up manager
 
-1. Require `FirestoreManager` 
+1. Require `FirestoreManager`
     ```js
     const { FirestoreManager } = require('@ming-suhi/djs-firestore');
     ```
@@ -47,6 +47,11 @@ npm install @ming-suhi/djs-firestore
 2. Attach an instance to discord client.
     ```js
     client.db = new FirestoreManager();
+    ```
+
+3. Initialize guilds.
+    ```js
+    client.db.initializeGuilds(client);
     ```
 
 ## D. Creating base documents
@@ -58,43 +63,40 @@ npm install @ming-suhi/djs-firestore
     });
     ```
 
-2. Create guild doc. Fetch a pseduo-doc(not yet existing doc), and post to it basic infos.
+2. Create guild doc.
     ```js
-    const guildDb = await client.db.guilds.fetch(guild.id);
-    await guildDb.update({id: guild.id, name: guild.name});
-    ```
-
-3. Listen to `guildMemberAdd`
-    ```js
-    client.on('guildMemberAdd', async member => {
-      // Code here
-    })
-
-4. Create member doc. Fetch a pseduo-doc(not yet existing doc), and post to it basic infos.
-    ```js
-    const guildDb = await client.db.guilds.fetch(member.guild.id);
-    const memberDb = await guildDb.members.fetch(member.user.id);
-    await memberDb.update({id: member.user.id, name: member.user.username});
+    // If needed require GuildDocument
+    const { GuildDocument } = = require('@ming-suhi/djs-firestore');
+    // Check if a guild doc for the guild exist
+    var guildDb = client.db.guilds.get(guild.id);
+    // If not existing create document
+    if (!guildDb) {
+      var guildDb = new GuildDocument(guild.id);
+      guildDb.initialize();
+      await guildDb.update({id: guild.id, name: guild.name});
+      // Put a reference to guilds
+      client.db.guilds.set(guild.id, guildDb);
+    }
     ```
 
 ## E. Other methods
 
-1. Get data method
+1. Get field method
     ```js
-    const guildDb = await client.db.guilds.fetch(guildId);
-    const data = await guildDb.data();
-    console.log(data);
+    const guildDb = client.db.guilds.get(guildId);
+    const fieldValue = guildDb.get('fieldName');
+    console.log(fieldValue);
     ```
 
 2. Update method
     ```js
-    const guildDb = await client.db.guilds.fetch(guildId);
+    const guildDb = client.db.guilds.get(guildId);
     await guildDb.update({"updated": true});
     ```
 
 3. Delete method
     ```js
-    const guildDb = await client.db.guilds.fetch(guildId);
+    const guildDb = client.db.guilds.get(guildId);
     await guildDb.delete();
     ```
 
