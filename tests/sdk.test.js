@@ -5,7 +5,7 @@ async function sleep() {
   await new Promise(r => setTimeout(r, 500));
 }
 
-var testDocument = {
+const testDocument = {
   testField: "testValue"
 }
 
