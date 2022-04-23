@@ -1,3 +1,6 @@
+# Repository Discontinued and is Now Archived
+###### Please Take Note When Using
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/ming-suhi/ming-suhi/master/djs-firestore.svg" width="100" align="center" />
 </p>
